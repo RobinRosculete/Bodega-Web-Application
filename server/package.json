@@ -1,0 +1,43 @@
+{
+  "name": "team_bodega",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev start": "node index.js",
+    "dev": "set NODE_ENV=development&& node index.js",
+    "prod": "set NODE_ENV=production&& node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/southwatertribe/team_bodega.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/southwatertribe/team_bodega/issues"
+  },
+  "homepage": "https://github.com/southwatertribe/team_bodega#readme",
+  "dependencies": {
+    "axios": "^1.2.0",
+    "body-parser": "^1.20.1",
+    "chai": "^4.3.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.0",
+    "mocha": "^10.1.0",
+    "multer": "^1.4.5-lts.1",
+    "save-dev": "^0.0.1-security"
+  },
+  "devDependencies": {
+    "jest": "^29.2.2",
+    "jwt-decode": "^3.1.2",
+    "mysql2": "^2.3.3",
+    "node-sql-parser": "^4.5.1",
+    "nodemon": "^2.0.20"
+  }
+}

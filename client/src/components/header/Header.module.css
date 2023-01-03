@@ -1,0 +1,29 @@
+.navdiv {
+  display: flex;
+  background-color: pink;
+  height: 90px;
+  align-items: stretch;
+}
+
+.navul {
+  display: flex;
+  list-style: none;
+  line-height: 180%;
+  list-style: none;
+  text-decoration: none;
+  padding: 5px 5px;
+  justify-content: space-around;
+  margin-left: 30px;
+  align-items: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.navli {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.navgoog {
+  align-items: right;
+}
+
