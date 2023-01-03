@@ -15,18 +15,18 @@ The Bodega Web Application will provide services for both the customer and CFO (
 
 ## What I learned
 
-
-* Contributed on the model component and had an important role in both the design of our schema, and the implementation of the CRUD functionality of the application. 
-
 * Learned database design and querying using SQL.
 
 * Created classes for managing all the database services using OOP design principles of JavaScript. 
 
-* Implemented basic routing using Express.js, and learned how to connect the frontend, to the backend and database.
+* Implemented basic routing using Express.js, and learned how to connect the frontend, with the backend and the database.
 
 * Learned how to host and connect the database using AWS RDS.
 
-## Model Component Architecture Design
+## Contrubution
+* Contributed to the model component and had an important role in both the design of our schema and the implementation of the CRUD functionality of the application. 
+
+#### Model Component Architecture Design
 
 <img src="https://github.com/RobinRosculete/Bodega-Web-Application/blob/main/Images/ARCH%20Design.png" width="800" height = "550" >
 
