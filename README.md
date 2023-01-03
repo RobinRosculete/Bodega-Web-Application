@@ -23,7 +23,7 @@ The Bodega Web Application will provide services for both the customer and CFO (
 
 * Learned how to host and connect the database using AWS RDS.
 
-## Contrubution
+## My Contribution
 * Contributed to the model component and had an important role in both the design of our schema and the implementation of the CRUD functionality of the application. 
 
 #### Model Component Architecture Design
