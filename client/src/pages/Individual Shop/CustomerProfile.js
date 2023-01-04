@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../pages.css";
+
 import Axios from "axios";
 
 function CustomerProfile() {

@@ -1,0 +1,22 @@
+.formdiv form {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formdiv input {
+  text-align: center;
+  width: 200px;
+  height: 30px;
+  margin: 10px;
+  font-size: 15px;
+}
+.formdiv button {
+  text-align: center;
+  width: 200px;
+  height: 30px;
+  margin: 5px;
+  background-color: pink;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}

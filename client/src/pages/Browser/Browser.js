@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 //import { Document, Page } from "@react-pdf/renderer";
-import "../pages.css";
 import Axios from "axios";
 //sShop Card
 //import ShopCard from "../../components/shopcard/ShopCard";

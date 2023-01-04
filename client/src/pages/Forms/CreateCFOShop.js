@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "./pages.css";
+import Style from "./froms.module.css";
 import Axios from "axios";
 import clearForm from "./CreateCustomer.js";
-import "./Individual Shop/IndividualShop.js";
+import "../Individual Shop/IndividualShop.js";
 
 function CreateCFOShop() {
   const [cfoShopName, setCfoShopName] = useState("");
@@ -43,7 +43,7 @@ function CreateCFOShop() {
   return (
     //CREATE CFO PROFILE PAGE
 
-    <div className="CFOShopForm">
+    <div className={Style.formdiv}>
       <form onReset={clearForm}>
         <h2>Create CFO Shop</h2>
         <label>Full Name</label>
@@ -179,12 +179,13 @@ function CreateCFOShop() {
           accept="application/pdf"
         />
 
-        <button onClick={submitCFOShop}>Submit</button>
-
         <button type="reset" value="Reset">
           Reset
         </button>
+        <button onClick={submitCFOShop}>Submit</button>
       </form>
+      <br />
+      <br />
     </div>
   ); //end
 }

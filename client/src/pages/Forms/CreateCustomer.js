@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import "./pages.css";
 import Axios from "axios";
-
+import Style from "./froms.module.css";
 function CreateCustomer() {
   const [customerFirstName, setCustomerFirstName] = useState("");
   const [customerMiddleName, setCustomerMiddleName] = useState("");
@@ -52,7 +51,7 @@ function CreateCustomer() {
 
   return (
     //CREATE Customer PROFILE PAGE
-    <div className="CustomerForm">
+    <div className={Style.formdiv}>
       <form onReset={clearForm}>
         <h2>Create Customer</h2>
         <label>Full Name</label>
@@ -152,6 +151,8 @@ function CreateCustomer() {
           Reset
         </button>
       </form>
+      <br />
+      <br />
     </div>
   ); //end return
 }

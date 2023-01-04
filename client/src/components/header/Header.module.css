@@ -1,6 +1,6 @@
 .navdiv {
   display: flex;
-  background-color: pink;
+  background-color: pink; /* use a transparent pink background color */
   height: 90px;
   align-items: stretch;
 }
@@ -15,7 +15,7 @@
   justify-content: space-around;
   margin-left: 30px;
   align-items: center;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Open Sans", sans-serif; /* use a sans-serif font */
 }
 
 .navli {
@@ -27,3 +27,13 @@
   align-items: right;
 }
 
+.navli a {
+  color: #000000; /* use a white color for the links */
+  text-decoration: none; /* remove the underline from the links */
+  transition: color 0.2s ease-in-out; /* add a smooth transition for the hover effect */
+}
+
+.navli a:hover {
+  color: #fae8e0; /* change the color of the links on hover */
+  text-decoration: underline; /* add an underline to the links on hover */
+}
