@@ -1,17 +1,16 @@
 import React from "react";
-import "./support.module.css";
+import Style from "./support.module.css";
 import Supportmessage from "./supportMessage";
 
 export default function Support() {
-    return (
-      //Make an about page
-      
-      <div>
-            <Supportmessage/>
-            <a href="mailto: dev@bodega.com">Contact the Devs </a>
-      </div>   
-          
-  
-    );
-  }
-  
+  return (
+    //Make an about page
+
+    <div className={Style.supdiv}>
+      <Supportmessage />
+      <a className={Style.a} href="mailto: dev@bodega.com">
+        Contact the Devs{" "}
+      </a>
+    </div>
+  );
+}

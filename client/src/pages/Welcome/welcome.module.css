@@ -1,18 +1,31 @@
 .firstMsg {
-    width: 50%;
-    float: left;
-    margin-bottom: 20px;
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .secondMsg {
-    width: 50%;
-    float: right;
-    margin-bottom: 20px;
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .imagegrid {
-    display: flex;
-    margin-top: 25px;
-    margin-bottom: 25px;
+  display: flex;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
 
+.imagegrid img {
+  width: calc(50% - 20px);
+  margin-bottom: 20px;
+  object-fit: cover;
+  border-radius: 5px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
 }

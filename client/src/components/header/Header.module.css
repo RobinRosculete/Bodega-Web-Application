@@ -1,6 +1,6 @@
 .navdiv {
   display: flex;
-  background-color: pink; /* use a transparent pink background color */
+  background: linear-gradient(to right, pink, rgb(255, 230, 234));
   height: 90px;
   align-items: stretch;
 }
