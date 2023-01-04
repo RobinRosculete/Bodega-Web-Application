@@ -18,6 +18,9 @@ const startServer = async () => {
   const createCustomerProfileRoute = require("./routes/CustomerAccountCreation");
   app.use("/Customer-Account-Creation/", createCustomerProfileRoute);
 
+  const userLogin = require("./routes/UserLogin");
+  app.use("/User-Login/", userLogin);
+
   app.listen(PORT, () => {
     console.log(`Spun up on ${PORT}`);
   });

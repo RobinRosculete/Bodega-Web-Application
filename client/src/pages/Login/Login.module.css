@@ -1,3 +1,11 @@
+body {
+  background: linear-gradient(
+    to right,
+    rgb(255, 238, 241),
+    rgba(214, 248, 255, 0.455)
+  );
+}
+
 .LoginWrapper {
   width: 500px;
   padding: 50px;
@@ -9,22 +17,17 @@
   border-color: #000000;
   margin: 5em auto;
 }
-body {
-  background: linear-gradient(
-    to right,
-    rgb(255, 238, 241),
-    rgba(214, 248, 255, 0.455)
-  );
-}
 
 .LoginWrapper h2 {
   background: pink;
+  width: 500px;
+  height: 40px;
   color: #000000;
   font-size: 30px;
   font-weight: 300;
   text-align: center;
-  padding: 20px;
-  border-radius: 2px;
+  padding: 30px;
+  border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -38,16 +41,17 @@ body {
 }
 
 .LoginWrapper h2:before {
-  margin-bottom: 10px;
+  margin-bottom: 8x;
 }
 
 .LoginWrapper h2:after {
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .LoginWrapper p {
   font-size: 20px;
-  color: rgba(0, 0, 0, 0.7);
+  font-weight: 30000px;
+  color: rgb(255, 233, 237);
   line-height: 1.5;
   text-align: center;
   margin: 20px 0;

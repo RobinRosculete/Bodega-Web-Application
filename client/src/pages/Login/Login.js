@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import Style from "./Login.module.css";
-
+import Axios from "axios";
 function Login() {
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({}); // States used for input error handeling
+  const [emailLogin, setEmailLogin] = useState(""); // Sate used to store input email
+  const [passwordLogin, setPasswordogin] = useState(""); //State used to store account password
 
-  const handleSubmit = (event) => {
+  // Function purpose to handle login, and error check input before sending to baackend
+  const handleLogin = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const email = formData.get("email");
@@ -16,14 +19,23 @@ function Login() {
     if (!password) {
       setErrors((errors) => ({ ...errors, password: "Password is required" }));
     }
+    //Seting Email Login
+    setEmailLogin(email);
+    setPasswordogin(password);
 
-    // Additional validation and form submission logic goes here
+    //Send login information to backend
+    Axios.post("http://localhost:3001/User-Login/login", {
+      emailLogin: emailLogin,
+      passwordLogin: passwordLogin,
+    }).then((response) => {
+      console.log(response);
+    });
   };
 
   return (
     <div className={Style.LoginWrapper}>
       <h2>Log In </h2>
-      <form onSubmit={(event) => handleSubmit(event)}>
+      <form onSubmit={(event) => handleLogin(event)}>
         <label>
           <p> Email: </p>
           <input
