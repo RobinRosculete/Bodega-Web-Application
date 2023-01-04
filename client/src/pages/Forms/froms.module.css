@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: "Open Sans", sans-serif;
 }
 
 .formdiv input {
@@ -11,12 +12,32 @@
   height: 30px;
   margin: 10px;
   font-size: 15px;
+  border: 1px solid pink;
+  transition: background-color 0.2s ease-in-out;
+}
+.formdiv input:hover {
+  background-color: #fae8e0;
 }
 .formdiv button {
   text-align: center;
   width: 200px;
   height: 30px;
   margin: 5px;
+  font-family: "Open Sans", sans-serif;
+  border: none;
+  color: #000000;
+  border: 1px solid pink;
+  transition: background-color 0.3s ease-in-out;
+  background-color: #fae8e0;
+}
+.formdiv button:hover {
   background-color: pink;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.formdiv label {
+  font-family: "Open Sans", sans-serif;
+  display: block;
+  color: #000000;
+  border: none;
+  transition: color 0.2s ease-in-out;
 }

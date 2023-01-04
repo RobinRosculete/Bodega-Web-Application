@@ -63,17 +63,24 @@
   background-color: #fff;
   min-height: 10px;
   font-size: 18px;
-
-  border: 2px solid rgb(0, 0, 0);
-  padding: 10px;
+  text-align: center;
+  width: 200px;
+  height: 30px;
+  margin: 10px;
+  font-size: 15px;
+  border: 1px solid pink;
+  transition: background-color 0.2s ease-in-out;
+}
+.LoginWrapper input:hover {
+  background-color: #fae8e0;
 }
 
 .submitButton {
-  background: pink;
+  background: #fae8e0;
   border-radius: 999px;
   box-shadow: pink 0 10px 20px -10px;
   box-sizing: border-box;
-  color: #000000;
+  color: #000000be;
   cursor: pointer;
   font-size: 16px;
   font-weight: 700;
@@ -90,7 +97,7 @@
 }
 
 .submitButton:hover {
-  background: #000000;
-  color: #ffb8fe;
+  background: pink;
+  color: #000000;
   box-shadow: #000000 0 10px 20px -10px;
 }

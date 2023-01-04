@@ -179,10 +179,10 @@ function CreateCFOShop() {
           accept="application/pdf"
         />
 
+        <button onClick={submitCFOShop}>Submit</button>
         <button type="reset" value="Reset">
           Reset
         </button>
-        <button onClick={submitCFOShop}>Submit</button>
       </form>
       <br />
       <br />

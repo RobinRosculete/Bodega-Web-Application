@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import style from "./Login.module.css";
+import Style from "./Login.module.css";
 
 function Login() {
   const [errors, setErrors] = useState({});
@@ -21,7 +21,7 @@ function Login() {
   };
 
   return (
-    <div className={style.LoginWrapper}>
+    <div className={Style.LoginWrapper}>
       <h2>Log In </h2>
       <form onSubmit={(event) => handleSubmit(event)}>
         <label>
@@ -49,7 +49,7 @@ function Login() {
         </label>
         <div>
           <br />
-          <button type="submit" className={style.submitButton}>
+          <button type="submit" className={Style.submitButton}>
             Log in
           </button>
           <br />
