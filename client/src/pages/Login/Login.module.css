@@ -24,6 +24,7 @@ body {
   height: 10px;
   color: #ffffff;
   font-size: 30px;
+  font-family: "Open Sans", sans-serif;
   font-weight: 300;
   text-align: center;
   padding: 20px;
@@ -64,12 +65,14 @@ body {
   background-color: #fff;
   min-height: 10px;
   font-size: 13px;
+  font-family: "Open Sans", sans-serif;
   text-align: left;
   width: 200px;
   height: 30px;
   margin: 10px;
   border: 2px solid rgb(0, 9, 33);
   transition: background-color 0.2s ease-in-out;
+  border-radius: 12px;
 }
 .LoginWrapper input:hover {
   background-color: #fae8e0;
