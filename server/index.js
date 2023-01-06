@@ -21,6 +21,9 @@ const startServer = async () => {
   const userLogin = require("./routes/UserLogin");
   app.use("/User-Login/", userLogin);
 
+  const testPageRoute = require("./routes/CFOShopCreation");
+  app.use("/Test-Page/", testPageRoute);
+
   app.listen(PORT, () => {
     console.log(`Spun up on ${PORT}`);
   });

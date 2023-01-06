@@ -1,0 +1,12 @@
+
+.formdiv p, h3 {
+  display: inline-block;
+  vertical-align: middle;
+  width: calc(100% / 13);
+  text-align: center;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border: 1px solid pink;
+  margin: 5px;
+  padding: 20px 50px;
+}

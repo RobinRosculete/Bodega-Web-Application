@@ -12,6 +12,7 @@ import CreateCustomer from "./pages//Forms/CreateCustomer";
 import CustomerAccount from "./pages/Individual Shop/CustomerProfile";
 import Support from "./pages/Support/support";
 import Login from "./pages/Login/Login";
+import TestPage from "./pages/Browser/TestPage";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/customeraccount" element={<CustomerAccount />} />
         <Route path="/Support" element={<Support />} />
         <Route path="/Login" element={<Login />} />
+        <Route path="/Test-Page" element={<TestPage />} />
       </Routes>
       <div>
         <Footer />
