@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Style from "./Login.module.css";
+import GLogin from "../../components/loginButton/GoogleLoginButton.js";
 import Axios from "axios";
+
 //const bcrypt = require("bcryptjs");
 function Login() {
   const [errors, setErrors] = useState({}); // States used for input error handeling
@@ -70,6 +72,7 @@ function Login() {
           <br />
         </div>
       </form>
+      <GLogin></GLogin>
     </div>
   );
 }
