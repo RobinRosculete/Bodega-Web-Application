@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Style from "./Login.module.css";
 import Axios from "axios";
+//const bcrypt = require("bcryptjs");
 function Login() {
   const [errors, setErrors] = useState({}); // States used for input error handeling
   const [emailLogin, setEmailLogin] = useState(""); // Sate used to store input email
@@ -12,6 +13,7 @@ function Login() {
     const formData = new FormData(event.target);
     const email = formData.get("email");
     const password = formData.get("password");
+    //const password = bcrypt.hashSync(formData.get("password"), 10);
 
     if (!email) {
       setErrors((errors) => ({ ...errors, email: "Email is required" }));
@@ -37,21 +39,22 @@ function Login() {
       <h2>Log In </h2>
       <form onSubmit={(event) => handleLogin(event)}>
         <label>
-          <p> Email: </p>
           <input
             type="email"
             name="email"
+            placeholder="Email"
             pattern="[^@]+@[^@]+\.[^@]+"
             required
             error={errors.email}
             aria-invalid={errors.email ? "true" : "false"}
           />
+          <br />
         </label>
         <label>
-          <p> Password: </p>
           <input
             type="password"
             name="password"
+            placeholder="Password"
             minLength="8"
             maxLength="32"
             required

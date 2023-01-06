@@ -8,36 +8,27 @@ body {
 
 .LoginWrapper {
   width: 500px;
-  padding: 50px;
+  padding: 95px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgb(68, 135, 243);
   border-radius: 20px;
   border-color: #000000;
   margin: 5em auto;
+  background-image: url("./img/cat.png");
+  background-position: left;
 }
 
 .LoginWrapper h2 {
-  background: pink;
   width: 500px;
-  height: 40px;
-  color: #000000;
+  height: 10px;
+  color: #ffffff;
   font-size: 30px;
+  font-family: "Open Sans", sans-serif;
   font-weight: 300;
   text-align: center;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.LoginWrapper h2:before,
-.LoginWrapper h2:after {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 2px;
-  background: #00000052;
+  padding: 20px;
+  border-radius: 20px;
 }
 
 .LoginWrapper h2:before {
@@ -73,14 +64,15 @@ body {
 .LoginWrapper input {
   background-color: #fff;
   min-height: 10px;
-  font-size: 18px;
-  text-align: center;
+  font-size: 13px;
+  font-family: "Open Sans", sans-serif;
+  text-align: left;
   width: 200px;
   height: 30px;
   margin: 10px;
-  font-size: 15px;
-  border: 2px solid rgb(0, 9, 33);
+  border: 1px solid rgba(123, 158, 255, 0.676);
   transition: background-color 0.2s ease-in-out;
+  border-radius: 12px;
 }
 .LoginWrapper input:hover {
   background-color: #fae8e0;
