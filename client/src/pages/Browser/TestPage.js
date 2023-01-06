@@ -15,8 +15,6 @@ class TestPage extends React.Component {
 
   componentDidMount() {
     // fetch list of businesses
-    //fetch('http://localhost:3001/CFO-Shop-Creation/CFOShop/')
-    //fetch('http://localhost:3001/CFO-Shop-Creation/testpage/')
     fetch('http://localhost:3001/Test-Page/testpage/')
         .then((response) => response.json())
         .then((businesses) => {
