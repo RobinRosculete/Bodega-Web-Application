@@ -77,7 +77,7 @@ router.get("/testpage/", (req, res) => {
   const db = CfoShopDbServices.getCFOShopDbInstance();
 
     const result = db.readAllCFOShops();
-    console.log("test: ", result);
+    //console.log("test: ", result);
 
     //Send Data to Frontend
     //result.then((CFOShops) => res.send(CFOShops));
