@@ -21,3 +21,13 @@
   margin: 5px;
 
 }
+
+.formdiv h2 {
+  background-image: url("./img/cottage.png");
+  background-repeat: no-repeat;
+  background-size: 55px;
+  background-position: left;
+  width: 55px;
+  height: 47px;
+  margin: 5px;
+}

@@ -27,7 +27,9 @@ class TestPage extends React.Component {
     return (
       <div className={Style.formdiv}>
         {businesses.map((business) => (
+          /*<div key={business.CFO_id} className={Style.icon}>*/
           <div key={business.CFO_id} className="food-business">
+            <h2></h2>
             <h3>Food Business: {business.CFO_Shop_Name}</h3>
             <p>Owner: {business.CFO_firstname}{business.CFO_lastname}</p>
             <p>Located at: {business.address1}{business.address2}</p>
