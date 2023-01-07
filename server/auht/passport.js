@@ -2,7 +2,7 @@ const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 require("dotenv").config;
 const port = process.env.PORT;
-const GOOGLE_CALLBACK_URL = `http://localhost:${port}/auth/google/callback`;
+const GOOGLE_CALLBACK_URL = `http://localhost:${port}/auth/auth/google/callback`;
 
 passport.use(
   new GoogleStrategy(

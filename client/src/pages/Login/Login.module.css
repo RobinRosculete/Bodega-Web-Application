@@ -104,3 +104,27 @@ body {
   color: #000000;
   box-shadow: #000000 0 10px 20px -10px;
 }
+
+.GoogleLogin {
+  display: inline-block;
+  border-radius: 999px;
+  align-items: center;
+  background: linear-gradient(to right, #4285f4, #db4437);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 10px 20px;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+.GoogleLogin::before {
+  content: "";
+  background: url(https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg)
+    no-repeat;
+  background-size: cover;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin-right: 10px;
+}
