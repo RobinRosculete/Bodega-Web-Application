@@ -1,22 +1,5 @@
-import React, { useState } from "react";
-import { GoogleLogout } from "react-google-login";
+import React from "react";
 
-function GoogleLogoutButton() {
-  const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
-  const [profile, setProfile] = useState([]);
-  const logOut = () => {
-    setProfile(null);
-  };
+const GoogleLogoutButton = () => {};
 
-  return (
-    <div class="GoogleLogoutButtonWrapper">
-      <div>
-        <GoogleLogout
-          clientId={clientId}
-          buttonText="Log out"
-          onLogoutSuccess={logOut}
-        />
-      </div>
-    </div>
-  );
-}
+export default GoogleLogoutButton;

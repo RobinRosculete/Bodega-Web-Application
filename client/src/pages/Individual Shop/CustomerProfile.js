@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import Axios from "axios";
 
-function CustomerProfile() {
+function CustomerProfile(userDetails) {
   const [customerList, setCustomerlist2] = useState([]);
   const getCustomerdata = () => {
     Axios.get("http://localhost:3001/Customer-Account-Creation/Customer").then(
@@ -15,6 +15,10 @@ function CustomerProfile() {
     );
   };
 
+  const logout = () => {
+    window.open(`${process.env.REACT_APP_API_URL}/auth/logout`, "_self");
+  };
+
   return (
     <div className="View Customer Information">
       <h2>View Customer Information</h2>
@@ -23,6 +27,7 @@ function CustomerProfile() {
         return (
           <div className="customer">
             <div>
+              <h3>UserName</h3>
               <h3>customerFirstName: {val.customer_firstname}</h3>
               <h3>customerMiddleName: {val.customer_midlename}</h3>
               <h3>customerLastName: {val.customer_lastname}</h3>
@@ -34,6 +39,7 @@ function CustomerProfile() {
               <h3>customerPhoneNumber: {val.phone_number}</h3>
               <h3>customerEmail: {val.email_address}</h3>
             </div>
+            <button onClick={logout}>Log Out</button>
           </div>
         ); //end inner return
       })}

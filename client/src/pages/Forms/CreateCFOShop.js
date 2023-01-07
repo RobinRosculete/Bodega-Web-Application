@@ -36,7 +36,6 @@ function CreateCFOShop() {
       cfoZip: cfoZip,
     }).then(() => {
       alert("Successfully added CFO Shop");
-      window.location.href = "http://localhost:3000/yourshop";
     });
   };
 
