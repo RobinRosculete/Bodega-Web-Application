@@ -28,18 +28,12 @@ class TestPage extends React.Component {
       <div className={Style.formdiv}>
         {businesses.map((business) => (
           <div key={business.CFO_id} className="food-business">
-            <h3>{business.CFO_Shop_Name}</h3>
-            <p>{business.CFO_firstname}</p>
-            <p>{business.CFO_lastname}</p>
-            <p>{business.CFO_food_tag}</p>
-            <p>{business.address1}</p>
-            <p>{business.address2}</p>
-            <p>{business.state}</p>
-            <p>{business.city}</p>
-            <p>{business.zipcode}</p>
-            <p>{business.phone_number}</p>
-            <p>{business.email_address}</p>
-            <p>{business.CFO_website_link}</p>
+            <h3>Food Business: {business.CFO_Shop_Name}</h3>
+            <p>Owner: {business.CFO_firstname}{business.CFO_lastname}</p>
+            <p>Located at: {business.address1}{business.address2}</p>
+            <p>{business.state} {business.city}{business.zipcode}</p>
+            <p>Please Contact at: {business.phone_number}{business.email_address}{business.CFO_website_link}</p>
+            <p>Food Tags: {business.CFO_food_tag}</p>
           </div>
         ))}
       </div>

@@ -1,12 +1,23 @@
 
-.formdiv p, h3 {
+
+.formdiv div {
   display: inline-block;
   vertical-align: middle;
-  width: calc(100% / 13);
-  text-align: center;
+  /*width: calc(100% / 13);*/
+  width: calc(91%);
+  /*text-align: center;*/
+  text-align: left;
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
   border: 1px solid pink;
   margin: 5px;
   padding: 20px 50px;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+.formdiv p, h3 {
+  display: flex;
+  margin: 5px;
+
 }
