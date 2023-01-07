@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Style from "./Login.module.css";
-import GLogin from "../../components/loginButton/GoogleLoginButton.js";
+import GoogleLoginButton from "../../components/loginButtons/GoogleLoginButton.js";
 import Axios from "axios";
 
 //const bcrypt = require("bcryptjs");
@@ -67,12 +67,13 @@ function Login() {
         <div>
           <br />
           <button type="submit" className={Style.submitButton}>
-            Log in
+            Please Log in
           </button>
+
+          <GoogleLoginButton></GoogleLoginButton>
           <br />
         </div>
       </form>
-      <GLogin></GLogin>
     </div>
   );
 }
