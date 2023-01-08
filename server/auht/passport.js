@@ -11,6 +11,7 @@ passport.use(
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       callbackURL: GOOGLE_CALLBACK_URL,
       passReqToCallback: true,
+      scope: ["profile", "email"],
     },
     async (req, accessToken, refreshToken, profile, callback) => {
       const defaultUser = {
@@ -18,6 +19,7 @@ passport.use(
         email: profile.emails[0].value,
         picture: profile.photos[0].value,
         googleId: profile.id,
+        scope: ["profile", "email"],
       };
     }
   )

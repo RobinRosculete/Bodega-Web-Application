@@ -6,7 +6,6 @@ const cors = require("cors");
 const passport = require("passport");
 const cookieSession = require("cookie-session");
 const passportSetup = require("./auht/passport");
-const passportGoogleSSO = require("./auht/passportGoogleSSO");
 
 const startServer = async () => {
   const app = express();
@@ -17,7 +16,7 @@ const startServer = async () => {
   app.use(
     cookieSession({
       name: "session",
-      keys: ["cyberwolve"],
+      keys: [process.env.COOKIE_KEY],
       maxAge: 24 * 60 * 60 * 100,
     })
   );
