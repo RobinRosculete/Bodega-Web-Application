@@ -5,14 +5,14 @@ import Axios from "axios";
 function CustomerProfile(userDetails) {
   const [customerList, setCustomerlist2] = useState([]);
   const getCustomerdata = () => {
-    Axios.get("http://localhost:3001/Customer-Account-Creation/Customer").then(
-      (response) => {
-        console.log(response, "response only");
-        console.log(response.data, "response.data only");
-        console.log(response.customerFirstName, "response.firstname only");
-        setCustomerlist2(response.data);
-      }
-    );
+    Axios.get(
+      `${process.env.REACT_APP_API_URL}/Customer-Account-Creation/Customer`
+    ).then((response) => {
+      console.log(response, "response only");
+      console.log(response.data, "response.data only");
+      console.log(response.customerFirstName, "response.firstname only");
+      setCustomerlist2(response.data);
+    });
   };
 
   const logout = () => {

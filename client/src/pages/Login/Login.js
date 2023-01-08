@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Style from "./Login.module.css";
 import Axios from "axios";
-//const serverPort = process.env.REACT_APP_API_URL;
 
 function Login() {
   const [errors, setErrors] = useState({}); // States used for input error handeling
@@ -14,7 +13,6 @@ function Login() {
     const formData = new FormData(event.target);
     const email = formData.get("email");
     const password = formData.get("password");
-    //const password = bcrypt.hashSync(formData.get("password"), 10);
 
     if (!email) {
       setErrors((errors) => ({ ...errors, email: "Email is required" }));
@@ -26,8 +24,9 @@ function Login() {
     setEmailLogin(email);
     setPasswordogin(password);
 
+    const loginURL = `${process.env.REACT_APP_API_URL}/User-Login/login`;
     //Send login information to backend
-    Axios.post("http://localhost:3001/User-Login/login", {
+    Axios.post(loginURL, {
       emailLogin: emailLogin,
       passwordLogin: passwordLogin,
     }).then((response) => {
@@ -35,9 +34,10 @@ function Login() {
     });
   };
 
+  const googleLoginURl = `${process.env.REACT_APP_API_URL}/auth/auth/google/callback`;
   //Calling google auth api for login with google
   const googleAuth = () => {
-    window.open("http://localhost:3001/auth/auth/google/callback", "_self");
+    window.open(googleLoginURl, "_self");
   };
 
   return (

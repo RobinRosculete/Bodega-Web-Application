@@ -6,11 +6,11 @@ import Axios from "axios";
 function IndividualShop() {
   const [cfoList, setCFOlist2] = useState([]);
   const getCFOdata = () => {
-    Axios.get("http://localhost:3001/CFO-Shop-Creation/CFOShop/").then(
-      (response) => {
-        setCFOlist2(response.data);
-      }
-    );
+    Axios.get(
+      `${process.env.REACT_APP_API_URL}/CFO-Shop-Creation/CFOShop/`
+    ).then((response) => {
+      setCFOlist2(response.data);
+    });
   };
   //const shopItems = cfoList.map((shop) => <ShopCard {...shop}></ShopCard>);
   // Return statemnt should retur cards of CFO so the User can browse

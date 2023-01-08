@@ -4,8 +4,8 @@ const passport = require("passport");
 const router = express.Router();
 const clientPort = process.env.CLIENT_PORT;
 
-const succesLoginUrl = `http://localhost:${clientPort}`;
-const failureLoginUrl = `http://localhost:${clientPort}/support`;
+const succesLoginUrl = `${process.env.CLIENT_URL}`;
+const failureLoginUrl = `${process.env.CLIENT_URL}/support`;
 
 //Route for succesfull authentification
 router.get(
@@ -17,8 +17,8 @@ router.get(
   "/auth/google/callback",
   passport.authenticate("google", {
     failureMessage: "Cannot log in with Google, please try again later.",
-    failureRedirect: failureLoginUrl,
     successRedirect: succesLoginUrl,
+    failureRedirect: failureLoginUrl,
   }),
   (req, res) => {
     console.log("User", req.user);

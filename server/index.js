@@ -6,6 +6,7 @@ const cors = require("cors");
 const passport = require("passport");
 const cookieSession = require("cookie-session");
 const passportSetup = require("./auht/passport");
+const passportGoogleSSO = require("./auht/passportGoogleSSO");
 
 const startServer = async () => {
   const app = express();
@@ -23,7 +24,8 @@ const startServer = async () => {
   app.use(passport.initialize());
   app.use(passport.session());
 
-  app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+  const clientURL = `${process.env.CLIENT_URL}`;
+  app.use(cors({ origin: clientURL, credentials: true }));
 
   const port = process.env.PORT;
 
