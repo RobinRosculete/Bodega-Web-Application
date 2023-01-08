@@ -13,6 +13,7 @@ import CreateCustomer from "./pages/Forms/CreateCustomer";
 import CustomerAccount from "./pages/Individual Shop/CustomerProfile";
 import Support from "./pages/Support/support";
 import Login from "./pages/Login/Login";
+import TestPage from "./pages/Browser/TestPage";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -46,6 +47,7 @@ function App() {
           path="/Login"
           element={user ? <Navigate to="/" /> : <Login />}
         />
+        <Route path="/Test-Page" element={<TestPage />} />
       </Routes>
       <div>
         <Footer />

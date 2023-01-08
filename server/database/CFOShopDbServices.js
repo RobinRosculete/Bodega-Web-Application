@@ -46,10 +46,10 @@ class CFOShopDbServices {
         const sqlSelect = `SELECT CFO_Shop_Name, CFO_firstname, CFO_midlename, CFO_lastname, CFO_food_tag, CFO_website_link, 
         address1, address2, state, city, zipcode, phone_number, email_address
         FROM BodegaDB.CFO_Shop 
-         INNER JOIN Address ON CFO_Shop.CFO_id = Address.CFO_Shop_Id 
-         INNER JOIN Contact ON CFO_Shop.CFO_id = Contact.CFO_Shop_id;`;
+         INNER JOIN BodegaDB.Address ON BodegaDB.CFO_Shop.CFO_id = BodegaDB.Address.CFO_Shop_Id 
+         INNER JOIN BodegaDB.Contact ON BodegaDB.CFO_Shop.CFO_id = BodegaDB.Contact.CFO_Shop_id;`;
 
-        connection.query(sqlSelect, CFOId, (err, resuslts) => {
+        connection.query(sqlSelect, (err, resuslts) => {
           if (err) reject(new Error(err.message));
           resolve(resuslts);
         });

@@ -42,6 +42,9 @@ const startServer = async () => {
     console.log(`Listening on port ${port}`);
   });
 
+  const testPageRoute = require("./routes/CFOShopCreation");
+  app.use("/Test-Page/", testPageRoute);
+
   app.get("/", (req, res) => {
     res.json({
       message: "🦄",

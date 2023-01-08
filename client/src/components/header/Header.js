@@ -35,6 +35,9 @@ function Header() {
         <li className={styles.navli}>
           <Link to="/Login">Login</Link>
         </li>
+        <li className={styles.navli}>
+          <Link to="/Test-Page">TestPage</Link>
+        </li>
       </ul>
     </div>
   );
