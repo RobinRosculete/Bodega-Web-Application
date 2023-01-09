@@ -1,5 +1,5 @@
 # Bodega-Web-Application
- <img src="https://github.com/RobinRosculete/Bodega-Web-Application/blob/main/client/src/components/header/BodegaCat.jpg" width="250" height = "250">
+ <img src="https://github.com/RobinRosculete/Bodega-Web-Application/blob/main/client/src/Images/bodega-cat-logo.jpg?raw=true" width="250" height = "250">
 This web application was built as part of a group project for our COMP 380 class at California State University Northridge. I decided to continue my learning journey and continue to work on the project, making a copy of it on my GitHub. The first version of our project can be found <a href="https://github.com/southwatertribe/thebodegateam"> here. </a> 
 
 
@@ -29,7 +29,7 @@ The Bodega Web Application is designed to provide services for both customers an
 
 #### Model Component Architecture Design
 
-<img src="https://github.com/RobinRosculete/Bodega-Web-Application/blob/main/Images/ARCH%20Design.png" width="800" height = "550" >
+<img src="https://github.com/RobinRosculete/Bodega-Web-Application/blob/main/client/src/Images/arch-design-model.png?raw=true" width="800" height = "550" >
 
 ## Authors
 
