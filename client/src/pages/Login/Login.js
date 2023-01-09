@@ -68,13 +68,17 @@ function Login() {
             aria-invalid={errors.password ? "true" : "false"}
           />
         </label>
+
         <div>
           <button type="submit" className={Style.submitButton}>
-            Register
+            Log in
           </button>
         </div>
       </form>
       <p>or</p>
+      <button type="submit" className={Style.submitButton}>
+        Register
+      </button>
       <button className={Style.GoogleLogin} onClick={googleAuth}>
         <span>Sign in with Google</span>
       </button>

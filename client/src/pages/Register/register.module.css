@@ -20,8 +20,6 @@ body {
 }
 
 .RegisterWrapper h2 {
-  width: 500px;
-  height: 10px;
   color: #ffffff;
   font-size: 30px;
   font-family: "Open Sans", sans-serif;
@@ -31,17 +29,9 @@ body {
   border-radius: 20px;
 }
 
-.RegisterWrapper h2:before {
-  margin-bottom: 8x;
-}
-
-.RegisterWrapper h2:after {
-  margin-top: 5px;
-}
-
 .RegisterWrapper p {
   font-size: 20px;
-  font-weight: 30000px;
+  font-weight: 30000px; /* fix this value */
   color: rgb(255, 233, 237);
   line-height: 1.5;
   text-align: center;
@@ -61,6 +51,15 @@ body {
   background: #ffb8fe;
   border-bottom-color: #111010;
 }
+.RegisterWrapper label {
+  color: #ffffff;
+  font-size: 15px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  padding: 20px;
+  border-radius: 20px;
+}
+
 .RegisterWrapper input {
   background-color: #fff;
   min-height: 20px;
@@ -73,6 +72,8 @@ body {
   border: 1px solid rgba(123, 158, 255, 0.676);
   transition: background-color 0.2s ease-in-out;
   border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
 }
 .RegisterWrapper input:hover {
   background-color: #fae8e0;
@@ -118,6 +119,7 @@ body {
   outline: 0;
   cursor: pointer;
 }
+
 .GoogleRegister::before {
   content: "";
   background: url(https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg)

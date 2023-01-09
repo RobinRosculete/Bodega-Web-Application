@@ -42,9 +42,10 @@ function Register() {
 
   return (
     <div className={Style.RegisterWrapper}>
-      <h2>Log In </h2>
+      <h2>Register</h2>
       <form onSubmit={(event) => handleRegister(event)}>
         <label>
+          Email
           <input
             type="email"
             name="email"
@@ -57,6 +58,7 @@ function Register() {
           <br />
         </label>
         <label>
+          Password
           <input
             type="password"
             name="password"
@@ -68,18 +70,28 @@ function Register() {
             aria-invalid={errors.password ? "true" : "false"}
           />
         </label>
+        <label>
+          Confirm Password
+          <input
+            type="password"
+            name="confirmPassword"
+            placeholder="Confirm Password"
+            minLength="8"
+            maxLength="32"
+            required
+            error={errors.password}
+            aria-invalid={errors.password ? "true" : "false"}
+          />
+        </label>
         <div>
           <button type="submit" className={Style.submitButton}>
-            Log in
+            Register
           </button>
         </div>
       </form>
       <p>or</p>
-      <button type="submit" className={Style.submitButton}>
-        Register
-      </button>
       <button className={Style.GoogleRegister} onClick={googleAuth}>
-        <span>Sign in with Google</span>
+        <span>Continue with Google</span>
       </button>
     </div>
   );
