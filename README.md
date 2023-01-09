@@ -4,7 +4,7 @@ This web application was built as part of a group project for our COMP 380 class
 
 
 ## Description
-The Bodega Web Application will provide services for both the customer and CFO (Cottage Food Operators). The CFO will be able to create a profile for promoting their business. Our purpose for Bodega is to bridge the gap between growing CFOs and customers who want to help out their local community. We want to give a gateway of promotion for the CFOs to show off their business, as some of the home-operated businesses can sometimes be shadowed by larger-processed corporations.
+The Bodega Web Application is designed to provide services for both customers and CFOs (Cottage Food Operators). CFOs will have the ability to create profiles to promote their businesses, allowing them to connect with customers who are interested in supporting their local community. The goal of Bodega is to create a platform for CFOs to showcase their businesses and provide a gateway for promotion, as small, home-operated businesses may not always receive the same level of visibility as larger, processed corporations. Bodega aims to bridge this gap and help CFOs connect with potential customers.
 
 ## Built with
 
@@ -13,18 +13,19 @@ The Bodega Web Application will provide services for both the customer and CFO (
 * [Express.js](https://expressjs.com/)
 * [MySQL](https://www.mysql.com/)
 
-## What I learned
+## Through the development of this project, I learned about:
 
-* Learned database design and querying using SQL.
+* Database design and SQL querying.
 
-* Created classes for managing all the database services using OOP design principles of JavaScript. 
+* OOP design principles in JavaScript, specifically in the creation of classes for managing database services.
 
-* Implemented basic routing using Express.js, and learned how to connect the frontend, with the backend and the database.
+* Implementing basic routing using Express.js and connecting the frontend with the backend and the database.
 
-* Learned how to host and connect the database using AWS RDS.
+* Hosting and connecting the database using AWS RDS.
 
 ## My Contribution
-* Contributed to the model component and had an important role in both the design of our schema and the implementation of the CRUD functionality of the application. 
+* In my role on the project team, I made significant contributions to the model component and played a key role in the design and implementation of the application's CRUD functionality.
+* Working on the Bodega Web Application was a valuable learning experience for me. I gained practical skills in database design, OOP principles, and web development, and I am proud of the important role I played in the creation of this tool for connecting CFOs with customers and promoting small, home-operated businesses.
 
 #### Model Component Architecture Design
 
