@@ -37,17 +37,20 @@ const startServer = async () => {
   const authRoute = require("./routes/GoogleLogin");
   app.use("/auth/", authRoute);
 
-  app.listen(port, () => {
-    console.log(`Listening on port ${port}`);
-  });
-
   const testPageRoute = require("./routes/CFOShopCreation");
   app.use("/Test-Page/", testPageRoute);
+
+  const userLogin = require("./routes/UserLogin");
+  app.use("/User-Login/", userLogin);
 
   app.get("/", (req, res) => {
     res.json({
       message: "🦄",
     });
+  });
+
+  app.listen(port, () => {
+    console.log(`Listening on port ${port}`);
   });
 };
 startServer();

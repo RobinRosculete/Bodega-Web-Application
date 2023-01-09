@@ -1,4 +1,4 @@
-import React, { useState, Link } from "react";
+import React, { useState } from "react";
 import Style from "./register.module.css";
 import Axios from "axios";
 
@@ -13,25 +13,17 @@ function Register() {
     const formData = new FormData(event.target);
     const email = formData.get("email");
     const password = formData.get("password");
+    const confirmPassword = formData.get("confirmPassword");
 
     if (!email) {
       setErrors((errors) => ({ ...errors, email: "Email is required" }));
-    }
-    if (!password) {
+    } else if (!password) {
       setErrors((errors) => ({ ...errors, password: "Password is required" }));
+    } else {
+      //Seting Email and Password
+      setEmailRegister(email);
+      setPasswordogin(password);
     }
-    //Seting Email Register
-    setEmailRegister(email);
-    setPasswordogin(password);
-
-    const RegisterURL = `${process.env.REACT_APP_API_URL}/User-Register/Register`;
-    //Send Register information to backend
-    Axios.post(RegisterURL, {
-      emailRegister: emailRegister,
-      passwordRegister: passwordRegister,
-    }).then((response) => {
-      console.log(response);
-    });
   };
 
   const googleRegisterURl = `${process.env.REACT_APP_API_URL}/auth/auth/google/callback`;

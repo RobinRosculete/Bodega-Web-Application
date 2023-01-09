@@ -16,22 +16,25 @@ function Login() {
 
     if (!email) {
       setErrors((errors) => ({ ...errors, email: "Email is required" }));
-    }
-    if (!password) {
+    } else if (!password) {
       setErrors((errors) => ({ ...errors, password: "Password is required" }));
-    }
-    //Seting Email Login
-    setEmailLogin(email);
-    setPasswordogin(password);
+    } else {
+      setEmailLogin(email);
+      setPasswordogin(password);
 
-    const loginURL = `${process.env.REACT_APP_API_URL}/User-Login/login`;
-    //Send login information to backend
-    Axios.post(loginURL, {
-      emailLogin: emailLogin,
-      passwordLogin: passwordLogin,
-    }).then((response) => {
-      console.log(response);
-    });
+      const loginURL = `${process.env.REACT_APP_API_URL}/User-Login/login`;
+      //Send login information to backend
+      Axios.post(loginURL, {
+        emailLogin: emailLogin,
+        passwordLogin: passwordLogin,
+      })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((err) => {
+          console(err);
+        });
+    }
   };
 
   const googleLoginURl = `${process.env.REACT_APP_API_URL}/auth/auth/google/callback`;
