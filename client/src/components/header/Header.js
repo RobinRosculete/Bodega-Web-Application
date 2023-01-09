@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
-import Cat from "../header/BodegaCat.jpg";
+import Cat from "../../Images/bodega-cat-logo.jpg";
 
 function Header() {
   return (
     <div className={styles.navdiv}>
       {/* Logo Input */}
-      <img src={Cat} alt="BodegaCat" width="100" />
+      <img src={Cat} alt="bodega-cat-logo" width="100" />
 
       {/* Navigator into Header*/}
       <ul className={styles.navul}>

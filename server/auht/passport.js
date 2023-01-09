@@ -19,7 +19,6 @@ passport.use(
         email: profile.emails[0].value,
         picture: profile.photos[0].value,
         googleId: profile.id,
-        scope: ["profile", "email"],
       };
     }
   )
@@ -27,7 +26,7 @@ passport.use(
 
 passport.serializeUser((user, cb) => {
   console.log("Serializing user:", user);
-  cb(null, user.id);
+  cb(null, user);
 });
 
 //Not completed

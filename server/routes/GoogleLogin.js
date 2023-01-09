@@ -2,10 +2,9 @@
 const express = require("express");
 const passport = require("passport");
 const router = express.Router();
-const clientPort = process.env.CLIENT_PORT;
 
 const succesLoginUrl = `${process.env.CLIENT_URL}`;
-const failureLoginUrl = `${process.env.CLIENT_URL}/support`;
+const failureLoginUrl = `${process.env.CLIENT_URL}/Login`;
 
 //Route for succesfull authentification
 router.get(
@@ -23,6 +22,7 @@ router.get(
   (req, res) => {
     console.log("User", req.user);
     res.send("Thank you for singing in!");
+    res.redirect(succesLoginUrl);
   }
 );
 

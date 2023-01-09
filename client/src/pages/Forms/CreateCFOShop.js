@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Style from "./froms.module.css";
+import Style from "./forms.module.css";
 import Axios from "axios";
 import clearForm from "./CreateCustomer.js";
 import "../Individual Shop/IndividualShop.js";

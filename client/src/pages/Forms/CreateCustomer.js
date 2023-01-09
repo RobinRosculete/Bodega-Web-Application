@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Axios from "axios";
-import Style from "./froms.module.css";
+import Style from "./forms.module.css";
 
 function CreateCustomer() {
   const [customerFirstName, setCustomerFirstName] = useState("");

@@ -16,7 +16,7 @@ const startServer = async () => {
   app.use(
     cookieSession({
       name: "session",
-      keys: [process.env.COOKIE_KEY],
+      keys: [`${process.env.COOKIE_KEY}`],
       maxAge: 24 * 60 * 60 * 100,
     })
   );
@@ -35,7 +35,7 @@ const startServer = async () => {
   app.use("/Customer-Account-Creation/", createCustomerProfileRoute);
 
   const authRoute = require("./routes/GoogleLogin");
-  app.use("/auth", authRoute);
+  app.use("/auth/", authRoute);
 
   app.listen(port, () => {
     console.log(`Listening on port ${port}`);

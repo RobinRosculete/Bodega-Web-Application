@@ -6,7 +6,7 @@ body {
   );
 }
 
-.LoginWrapper {
+.RegisterWrapper {
   width: 500px;
   padding: 95px;
   display: flex;
@@ -19,7 +19,7 @@ body {
   background-position: left;
 }
 
-.LoginWrapper h2 {
+.RegisterWrapper h2 {
   width: 500px;
   height: 10px;
   color: #ffffff;
@@ -31,15 +31,15 @@ body {
   border-radius: 20px;
 }
 
-.LoginWrapper h2:before {
+.RegisterWrapper h2:before {
   margin-bottom: 8x;
 }
 
-.LoginWrapper h2:after {
+.RegisterWrapper h2:after {
   margin-top: 5px;
 }
 
-.LoginWrapper p {
+.RegisterWrapper p {
   font-size: 20px;
   font-weight: 30000px;
   color: rgb(255, 233, 237);
@@ -48,7 +48,7 @@ body {
   margin: 20px 0;
 }
 
-.LoginWrapper p a {
+.RegisterWrapper p a {
   color: pink;
   font-weight: 700;
   text-decoration: none;
@@ -56,14 +56,14 @@ body {
   transition: all 0.2s ease;
 }
 
-.LoginWrapper p a:hover {
+.RegisterWrapper p a:hover {
   color: #000000;
   background: #ffb8fe;
   border-bottom-color: #111010;
 }
-.LoginWrapper input {
+.RegisterWrapper input {
   background-color: #fff;
-  min-height: 10px;
+  min-height: 20px;
   font-size: 13px;
   font-family: "Open Sans", sans-serif;
   text-align: left;
@@ -74,7 +74,7 @@ body {
   transition: background-color 0.2s ease-in-out;
   border-radius: 12px;
 }
-.LoginWrapper input:hover {
+.RegisterWrapper input:hover {
   background-color: #fae8e0;
 }
 
@@ -105,7 +105,7 @@ body {
   box-shadow: #000000 0 10px 20px -10px;
 }
 
-.GoogleLogin {
+.GoogleRegister {
   display: inline-block;
   border-radius: 999px;
   align-items: center;
@@ -118,7 +118,7 @@ body {
   outline: 0;
   cursor: pointer;
 }
-.GoogleLogin::before {
+.GoogleRegister::before {
   content: "";
   background: url(https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg)
     no-repeat;
