@@ -8,10 +8,11 @@ class TestPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      businesses: [], // array of food businesses to display
+      businesses: [],  // array of food businesses to display
+      searchTerm: '',  // search term entered in search bar
     };
   }
-
+  
   componentDidMount() {
     // fetch list of businesses
     fetch(`${process.env.REACT_APP_API_URL}/Test-Page/testpage/`)
@@ -21,12 +22,31 @@ class TestPage extends React.Component {
       });
   }
 
+  handleSearchChange = (event) => {
+    this.setState({ searchTerm: event.target.value });
+  };
+
+
   render() {
-    const { businesses } = this.state;
+    const { businesses, searchTerm } = this.state;
+
+    const filteredBusinesses = businesses.filter((business) =>
+      business.CFO_Shop_Name.toLowerCase().includes(searchTerm.toLowerCase()));
+
     return (
       <div className={Style.formdiv}>
-        {businesses.map((business) => (
+        <div className="search-bar">
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchTerm}
+            onChange={this.handleSearchChange}
+          />
+        </div>
+        {filteredBusinesses.map((business) => (
+          /*<div key={business.CFO_id} className={Style.icon}>*/
           <div key={business.CFO_id} className="food-business">
+            <h2> </h2>
             <h3>Food Business: {business.CFO_Shop_Name}</h3>
             <p>
               Owner: {business.CFO_firstname}
