@@ -79,7 +79,7 @@ function Login() {
           </button>
         </div>
       </form>
-      <p>or</p>
+      or
       <div>
         <Link to="/register">
           <button type="submit" className={Style.submitButton}>

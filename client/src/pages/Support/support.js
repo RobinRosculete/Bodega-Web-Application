@@ -8,7 +8,7 @@ export default function Support() {
 
     <div className={Style.supdiv}>
       <Supportmessage />
-      <a className={Style.a} href="mailto: dev@bodega.com">
+      <a className={Style.a} href="mailto: rrosculete@gmail.com">
         Contact the Devs{" "}
       </a>
     </div>

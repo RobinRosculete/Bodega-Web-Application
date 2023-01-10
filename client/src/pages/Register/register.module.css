@@ -62,18 +62,16 @@ body {
 
 .RegisterWrapper input {
   background-color: #fff;
-  min-height: 20px;
-  font-size: 13px;
+  font-size: 15px;
   font-family: "Open Sans", sans-serif;
   text-align: left;
   width: 200px;
-  height: 30px;
-  margin: 10px;
+  height: 35px;
+  margin: 5px; /* smaller value for margin */
   border: 1px solid rgba(123, 158, 255, 0.676);
   transition: background-color 0.2s ease-in-out;
-  border-radius: 12px;
+  border-radius: 20px;
   display: flex;
-  justify-content: space-between;
 }
 .RegisterWrapper input:hover {
   background-color: #fae8e0;
@@ -129,4 +127,8 @@ body {
   height: 20px;
   display: inline-block;
   margin-right: 10px;
+}
+
+.radioWrapper {
+  text-align: center;
 }

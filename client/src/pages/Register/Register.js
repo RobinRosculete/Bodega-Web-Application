@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Style from "./register.module.css";
 import Axios from "axios";
 
@@ -6,6 +7,21 @@ function Register() {
   const [errors, setErrors] = useState({}); // States used for input error handeling
   const [emailRegister, setEmailRegister] = useState(""); // Sate used to store input email
   const [passwordRegister, setPasswordogin] = useState(""); //State used to store account password
+  const [userType, setUserType] = useState(""); //State used to store the type of user, either CFO or USER
+
+  //Function purpose to link to specific profile creation page
+  const optionSelected = (userType) => {
+    if (userType !== "none") {
+      window.location.href =
+        userType === "CFO"
+          ? "/CFO-Shop-Creation"
+          : "/Customer-Account-Creation";
+    } else {
+      console.log(
+        "Error: Invalid User Option Selected. Error Location Client/src/Pages/Rgister/Register.js"
+      );
+    }
+  };
 
   // Function purpose to handle Register, and error check input before sending to baackend
   const handleRegister = (event) => {
@@ -30,11 +46,12 @@ function Register() {
       alert("Succsefully Registered");
       setEmailRegister(email);
       setPasswordogin(password);
+      optionSelected(userType); // Calling function to send to specific user creation page
     }
   };
 
   const googleRegisterURl = `${process.env.REACT_APP_API_URL}/auth/auth/google/callback`;
-  //Calling google auth api for Register with google
+  //Calling google auth api for Register/ with google
   const googleAuth = () => {
     window.open(googleRegisterURl, "_self");
   };
@@ -44,7 +61,6 @@ function Register() {
       <h2>Register</h2>
       <form onSubmit={(event) => handleRegister(event)}>
         <label>
-          Email
           <input
             type="email"
             name="email"
@@ -57,7 +73,6 @@ function Register() {
           <br />
         </label>
         <label>
-          Password
           <input
             type="password"
             name="password"
@@ -70,7 +85,6 @@ function Register() {
           />
         </label>
         <label>
-          Confirm Password
           <input
             type="password"
             name="confirmPassword"
@@ -82,7 +96,29 @@ function Register() {
             aria-invalid={errors.confirmPassword ? "true" : "false"}
           />
         </label>
-        <div>
+        <div className={Style.radioWrapper}>
+          CFO
+          <input
+            type="radio"
+            name="userType"
+            value="CFO"
+            required
+            className={Style.radioInput}
+            onChange={(e) => {
+              setUserType(e.target.value);
+            }}
+          />
+          Customer
+          <input
+            type="radio"
+            name="userType"
+            value="Customer"
+            required
+            className={Style.radioInput}
+            onChange={(e) => {
+              setUserType(e.target.value);
+            }}
+          />
           <button type="submit" className={Style.submitButton}>
             Register
           </button>
