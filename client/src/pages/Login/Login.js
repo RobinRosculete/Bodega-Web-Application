@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Style from "./login.module.css";
 import Axios from "axios";
 
@@ -79,9 +80,13 @@ function Login() {
         </div>
       </form>
       <p>or</p>
-      <button type="submit" className={Style.submitButton}>
-        Register
-      </button>
+      <div>
+        <Link to="/register">
+          <button type="submit" className={Style.submitButton}>
+            Register
+          </button>
+        </Link>
+      </div>
       <button className={Style.GoogleLogin} onClick={googleAuth}>
         <span>Sign in with Google</span>
       </button>
