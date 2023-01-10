@@ -34,14 +34,16 @@ const startServer = async () => {
   const createCustomerProfileRoute = require("./routes/CustomerAccountCreation");
   app.use("/Customer-Account-Creation/", createCustomerProfileRoute);
 
+  //Google Login Routes
   const authRoute = require("./routes/GoogleLogin");
   app.use("/auth/", authRoute);
 
-  const testPageRoute = require("./routes/CFOShopCreation");
-  app.use("/Test-Page/", testPageRoute);
-
+  // Normal User Login route
   const userLogin = require("./routes/UserLogin");
   app.use("/User-Login/", userLogin);
+
+  const testPageRoute = require("./routes/CFOShopCreation");
+  app.use("/Test-Page/", testPageRoute);
 
   app.get("/", (req, res) => {
     res.json({

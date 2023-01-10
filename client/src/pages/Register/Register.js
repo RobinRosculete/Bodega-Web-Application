@@ -19,8 +19,15 @@ function Register() {
       setErrors((errors) => ({ ...errors, email: "Email is required" }));
     } else if (!password) {
       setErrors((errors) => ({ ...errors, password: "Password is required" }));
+    } else if (password !== confirmPassword) {
+      alert("Passwords do not match");
+      setErrors((errors) => ({
+        ...errors,
+        password: "Passwords do not match",
+      }));
     } else {
-      //Seting Email and Password
+      //Seting Email a
+      alert("Succsefully Registered");
       setEmailRegister(email);
       setPasswordogin(password);
     }
@@ -71,8 +78,8 @@ function Register() {
             minLength="8"
             maxLength="32"
             required
-            error={errors.password}
-            aria-invalid={errors.password ? "true" : "false"}
+            error={errors.confirmPassword}
+            aria-invalid={errors.confirmPassword ? "true" : "false"}
           />
         </label>
         <div>
