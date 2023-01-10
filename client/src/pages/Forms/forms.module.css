@@ -42,3 +42,26 @@
   border: none;
   transition: color 0.2s ease-in-out;
 }
+
+.formdivr p {
+  font-size: 20px;
+  font-weight: 30000px;
+  color: rgb(255, 233, 237);
+  line-height: 1.5;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.formdiv p a {
+  color: pink;
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 2px solid pink;
+  transition: all 0.2s ease;
+}
+
+.formdiv p a:hover {
+  color: #000000;
+  background: #ffb8fe;
+  border-bottom-color: #111010;
+}

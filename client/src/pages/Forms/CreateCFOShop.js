@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Style from "./froms.module.css";
+import Style from "./forms.module.css";
 import Axios from "axios";
 import clearForm from "./CreateCustomer.js";
 import "../Individual Shop/IndividualShop.js";
@@ -20,23 +20,25 @@ function CreateCFOShop() {
   const [cfoZip, setCfoZip] = useState("");
   //Axios alert message not working properly, alert message not beeing displayed
   const submitCFOShop = () => {
-    Axios.post("http://localhost:3001/CFO-Shop-Creation/CFO-Shop-Insertion", {
-      cfoShopName: cfoShopName,
-      cfoFirstName: cfoFirstName,
-      cfoMiddleName: cfoMiddleName,
-      cfoLastName: cfoLastName,
-      cfoPhoneNumber: cfoPhoneNumber,
-      cfoEmail: cfoEmail,
-      cfoFoodTag: cfoFoodTag,
-      cfoWebsite: cfoWebsite,
-      cfoAddress1: cfoAddress1,
-      cfoAddress2: cfoAddress2,
-      cfoCity: cfoCity,
-      cfoState: cfoState,
-      cfoZip: cfoZip,
-    }).then(() => {
+    Axios.post(
+      `${process.env.REACT_APP_API_URL}/CFO-Shop-Creation/CFO-Shop-Insertion`,
+      {
+        cfoShopName: cfoShopName,
+        cfoFirstName: cfoFirstName,
+        cfoMiddleName: cfoMiddleName,
+        cfoLastName: cfoLastName,
+        cfoPhoneNumber: cfoPhoneNumber,
+        cfoEmail: cfoEmail,
+        cfoFoodTag: cfoFoodTag,
+        cfoWebsite: cfoWebsite,
+        cfoAddress1: cfoAddress1,
+        cfoAddress2: cfoAddress2,
+        cfoCity: cfoCity,
+        cfoState: cfoState,
+        cfoZip: cfoZip,
+      }
+    ).then(() => {
       alert("Successfully added CFO Shop");
-      window.location.href = "http://localhost:3000/yourshop";
     });
   };
 

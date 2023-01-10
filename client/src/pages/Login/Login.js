@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Style from "./login.module.css";
 import Axios from "axios";
-//const bcrypt = require("bcryptjs");
+
 function Login() {
   const [errors, setErrors] = useState({}); // States used for input error handeling
   const [emailLogin, setEmailLogin] = useState(""); // Sate used to store input email
@@ -13,25 +14,34 @@ function Login() {
     const formData = new FormData(event.target);
     const email = formData.get("email");
     const password = formData.get("password");
-    //const password = bcrypt.hashSync(formData.get("password"), 10);
 
     if (!email) {
       setErrors((errors) => ({ ...errors, email: "Email is required" }));
-    }
-    if (!password) {
+    } else if (!password) {
       setErrors((errors) => ({ ...errors, password: "Password is required" }));
-    }
-    //Seting Email Login
-    setEmailLogin(email);
-    setPasswordogin(password);
+    } else {
+      setEmailLogin(email);
+      setPasswordogin(password);
 
-    //Send login information to backend
-    Axios.post("http://localhost:3001/User-Login/login", {
-      emailLogin: emailLogin,
-      passwordLogin: passwordLogin,
-    }).then((response) => {
-      console.log(response);
-    });
+      const loginURL = `${process.env.REACT_APP_API_URL}/User-Login/login`;
+      //Send login information to backend
+      Axios.post(loginURL, {
+        emailLogin: emailLogin,
+        passwordLogin: passwordLogin,
+      })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((err) => {
+          console(err);
+        });
+    }
+  };
+
+  const googleLoginURl = `${process.env.REACT_APP_API_URL}/auth/auth/google/callback`;
+  //Calling google auth api for login with google
+  const googleAuth = () => {
+    window.open(googleLoginURl, "_self");
   };
 
   return (
@@ -62,14 +72,24 @@ function Login() {
             aria-invalid={errors.password ? "true" : "false"}
           />
         </label>
+
         <div>
-          <br />
           <button type="submit" className={Style.submitButton}>
             Log in
           </button>
-          <br />
         </div>
       </form>
+      <p>or</p>
+      <div>
+        <Link to="/register">
+          <button type="submit" className={Style.submitButton}>
+            Register
+          </button>
+        </Link>
+      </div>
+      <button className={Style.GoogleLogin} onClick={googleAuth}>
+        <span>Sign in with Google</span>
+      </button>
     </div>
   );
 }

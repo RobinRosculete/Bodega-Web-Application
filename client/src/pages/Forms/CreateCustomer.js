@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Axios from "axios";
-import Style from "./froms.module.css";
+import Style from "./forms.module.css";
+
 function CreateCustomer() {
   const [customerFirstName, setCustomerFirstName] = useState("");
   const [customerMiddleName, setCustomerMiddleName] = useState("");
@@ -31,7 +32,7 @@ function CreateCustomer() {
   //Axios alert message not working properly, alert message not beeing displayed
   const submitCustomer = () => {
     Axios.post(
-      "http://localhost:3001/Customer-Account-Creation/CustomerInsertion",
+      `${process.env.REACT_APP_API_URL}/Customer-Account-Creation/CustomerInsertion`,
       {
         customerFirstName: customerFirstName,
         customerMiddleName: customerMiddleName,

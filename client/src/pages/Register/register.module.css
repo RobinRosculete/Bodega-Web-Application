@@ -1,0 +1,132 @@
+body {
+  background: linear-gradient(
+    to right,
+    rgb(255, 238, 241),
+    rgba(214, 248, 255, 0.455)
+  );
+}
+
+.RegisterWrapper {
+  width: 500px;
+  padding: 95px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
+  border-color: #000000;
+  margin: 5em auto;
+  background-image: url("../../Images/cooking-cat.png");
+  background-position: left;
+}
+
+.RegisterWrapper h2 {
+  color: #ffffff;
+  font-size: 30px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  text-align: center;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.RegisterWrapper p {
+  font-size: 20px;
+  font-weight: 30000px; /* fix this value */
+  color: rgb(255, 233, 237);
+  line-height: 1.5;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.RegisterWrapper p a {
+  color: pink;
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 2px solid pink;
+  transition: all 0.2s ease;
+}
+
+.RegisterWrapper p a:hover {
+  color: #000000;
+  background: #ffb8fe;
+  border-bottom-color: #111010;
+}
+.RegisterWrapper label {
+  color: #ffffff;
+  font-size: 15px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.RegisterWrapper input {
+  background-color: #fff;
+  min-height: 20px;
+  font-size: 13px;
+  font-family: "Open Sans", sans-serif;
+  text-align: left;
+  width: 200px;
+  height: 30px;
+  margin: 10px;
+  border: 1px solid rgba(123, 158, 255, 0.676);
+  transition: background-color 0.2s ease-in-out;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+.RegisterWrapper input:hover {
+  background-color: #fae8e0;
+}
+
+.submitButton {
+  background: #fae8e0;
+  border-radius: 999px;
+  box-shadow: pink 0 10px 20px -10px;
+  box-sizing: border-box;
+  color: #000000be;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 25px;
+  padding: 10px 18px;
+  user-select: none;
+  -webkit-user-select: none;
+  width: fit-content;
+  word-break: break-word;
+  border: none;
+  display: block;
+  margin: 15px auto;
+  transition: all 0.2s ease;
+}
+
+.submitButton:hover {
+  background: pink;
+  color: #000000;
+  box-shadow: #000000 0 10px 20px -10px;
+}
+
+.GoogleRegister {
+  display: inline-block;
+  border-radius: 999px;
+  align-items: center;
+  background: linear-gradient(to right, #4285f4, #db4437);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 10px 20px;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
+.GoogleRegister::before {
+  content: "";
+  background: url(https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg)
+    no-repeat;
+  background-size: cover;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin-right: 10px;
+}
