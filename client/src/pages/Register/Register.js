@@ -4,8 +4,8 @@ import Axios from "axios";
 
 function Register() {
   const [errors, setErrors] = useState({}); // States used for input error handeling
-  const [emailRegister, setEmailRegister] = useState(""); // Sate used to store input email
-  const [passwordRegister, setPasswordogin] = useState(""); //State used to store account password
+  const [registerEmail, setEmailRegister] = useState(""); // Sate used to store input email
+  const [registerPassword, setPasswordogin] = useState(""); //State used to store account password
   const [userType, setUserType] = useState(""); //State used to store the type of user, either CFO or USER
 
   //Function purpose to link to specific profile creation page
@@ -23,18 +23,18 @@ function Register() {
   };
 
   //Function purpose to Send new user to the backend to store in the Database
-  const sendNewUser = (event) => {
+  const sendNewUser = (userType) => {
     //Checking if new user is CFO or  user it a Customer Account
     let registerUrl = "";
-    if (event.target.userType === "CFO") {
-      registerUrl = `${process.env.REACT_APP_API_URL}/CFO-Register/Register`;
+    if (userType === "CFO") {
+      registerUrl = `${process.env.REACT_APP_API_URL}/cfo-register`;
     } else {
-      registerUrl = `${process.env.REACT_APP_API_URL}/Customer-Register/Register`;
+      registerUrl = `${process.env.REACT_APP_API_URL}/customer-register`;
     }
 
     Axios.post(registerUrl, {
-      registerEmail: emailRegister,
-      registerPassword: passwordRegister,
+      registerEmail: registerEmail,
+      registerPassword: registerPassword,
     })
       .then((response) => {
         console.log(response);
@@ -56,6 +56,7 @@ function Register() {
     const email = formData.get("email");
     const password = formData.get("password");
     const confirmPassword = formData.get("confirmPassword");
+    const userType = formData.get("userType");
 
     // validate email
     if (!email) {
@@ -93,11 +94,16 @@ function Register() {
     // else
     setEmailRegister(email);
     setPasswordogin(password);
-    sendNewUser(email, password); // Calling function to send new user to the Backend
-    optionSelected(userType); // Calling function to send to specific user creation page
+    setUserType(userType);
+
+    //caling function to send new user information to backend
+    sendNewUser(userType);
+    // Calling function to send to specific user creation page
+    optionSelected(userType);
     alert("Succsefully Registered");
   };
 
+  //Function purpose to route to the google auth backend endpoint.
   const googleRegisterURl = `${process.env.REACT_APP_API_URL}/auth/auth/google/callback`;
   //Calling google auth api for Register/ with google
   const googleAuth = () => {

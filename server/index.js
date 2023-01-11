@@ -34,6 +34,14 @@ const startServer = async () => {
   const createCustomerProfileRoute = require("./routes/CustomerAccountCreation");
   app.use("/Customer-Account-Creation/", createCustomerProfileRoute);
 
+  // Normal CFO User Register
+  const CFORegister = require("./routes/UserRegister");
+  app.use(CFORegister);
+
+  // Normal Customer User Register
+  const userRegister = require("./routes/UserRegister");
+  app.use(userRegister);
+
   //Google Login Routes
   const authRoute = require("./routes/GoogleLogin");
   app.use("/auth/", authRoute);
