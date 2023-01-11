@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import Style from "./register.module.css";
 import Axios from "axios";
 
@@ -23,31 +22,80 @@ function Register() {
     }
   };
 
+  //Function purpose to Send new user to the backend to store in the Database
+  const sendNewUser = (event) => {
+    //Checking if new user is CFO or  user it a Customer Account
+    let registerUrl = "";
+    if (event.target.userType === "CFO") {
+      registerUrl = `${process.env.REACT_APP_API_URL}/CFO-Register/Register`;
+    } else {
+      registerUrl = `${process.env.REACT_APP_API_URL}/Customer-Register/Register`;
+    }
+
+    Axios.post(registerUrl, {
+      registerEmail: emailRegister,
+      registerPassword: passwordRegister,
+    })
+      .then((response) => {
+        console.log(response);
+        alert(response.message);
+      })
+      .catch((err) => {
+        console.log(err);
+        // add a message to indicate there was an error with the registration
+      });
+  };
+
   // Function purpose to handle Register, and error check input before sending to baackend
   const handleRegister = (event) => {
     event.preventDefault();
+    // reset errors object
+    setErrors({});
+
     const formData = new FormData(event.target);
     const email = formData.get("email");
     const password = formData.get("password");
     const confirmPassword = formData.get("confirmPassword");
 
+    // validate email
     if (!email) {
       setErrors((errors) => ({ ...errors, email: "Email is required" }));
-    } else if (!password) {
+    } else if (!/^\S+@\S+$/.test(email)) {
+      setErrors((errors) => ({ ...errors, email: "Email is invalid" }));
+    }
+
+    // validate password
+    if (!password) {
       setErrors((errors) => ({ ...errors, password: "Password is required" }));
-    } else if (password !== confirmPassword) {
-      alert("Passwords do not match");
+    } else if (password.length < 8) {
       setErrors((errors) => ({
         ...errors,
-        password: "Passwords do not match",
+        password: "Password must be at least 8 characters long",
       }));
-    } else {
-      //Seting Email a
-      alert("Succsefully Registered");
-      setEmailRegister(email);
-      setPasswordogin(password);
-      optionSelected(userType); // Calling function to send to specific user creation page
     }
+    // validate confirmPassword
+    if (!confirmPassword) {
+      setErrors((errors) => ({
+        ...errors,
+        confirmPassword: "Confirm Password is required",
+      }));
+    } else if (password !== confirmPassword) {
+      setErrors((errors) => ({
+        ...errors,
+        confirmPassword: "Passwords do not match",
+      }));
+    }
+    // Check if there are any errors
+    if (Object.keys(errors).length > 0) {
+      console.log("errors:", errors);
+      return;
+    }
+    // else
+    setEmailRegister(email);
+    setPasswordogin(password);
+    sendNewUser(email, password); // Calling function to send new user to the Backend
+    optionSelected(userType); // Calling function to send to specific user creation page
+    alert("Succsefully Registered");
   };
 
   const googleRegisterURl = `${process.env.REACT_APP_API_URL}/auth/auth/google/callback`;
