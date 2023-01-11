@@ -1,3 +1,12 @@
+/* Feature not completed, feature work: 
+
+    1. Improve Form validation, and error handling
+    2. Password Encription
+    3. Verify if user exists, or if he need to register
+    5. Refactor code to make it more connsistent, organizes and efficient
+    6. Complete Google Authentication
+*/
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Style from "./login.module.css";

@@ -1,3 +1,12 @@
+/* Feature not completed, feature work: 
+    1. Improve Form validation, and error handling
+    2. Password Encription
+    3. Verify if user already exists
+    4. verify if new information, like password or email is already in the DB
+    5. Refactor code to make it more connsistent, organizes and efficient
+    6. Complete Google Authentication
+*/
+
 import React, { useState } from "react";
 import Style from "./register.module.css";
 import Axios from "axios";
@@ -9,7 +18,7 @@ function Register() {
   const [userType, setUserType] = useState(""); //State used to store the type of user, either CFO or USER
 
   //Function purpose to link to specific profile creation page
-  const optionSelected = (userType) => {
+  const sendToProfileCreationPage = () => {
     if (userType !== "none") {
       window.location.href =
         userType === "CFO"
@@ -20,10 +29,10 @@ function Register() {
         "Error: Invalid User Option Selected. Error Location Client/src/Pages/Rgister/Register.js"
       );
     }
-  };
+  }; // end function sendToProfileCreationPage
 
   //Function purpose to Send new user to the backend to store in the Database
-  const sendNewUser = (userType) => {
+  const sendNewUser = () => {
     //Checking if new user is CFO or  user it a Customer Account
     let registerUrl = "";
     if (userType === "CFO") {
@@ -42,66 +51,38 @@ function Register() {
       })
       .catch((err) => {
         console.log(err);
-        // add a message to indicate there was an error with the registration
       });
-  };
+  }; // end function sendNewUser
 
   // Function purpose to handle Register, and error check input before sending to baackend
-  const handleRegister = (event) => {
+  const handleRegistration = (event) => {
     event.preventDefault();
-    // reset errors object
-    setErrors({});
-
     const formData = new FormData(event.target);
     const email = formData.get("email");
     const password = formData.get("password");
     const confirmPassword = formData.get("confirmPassword");
     const userType = formData.get("userType");
 
-    // validate email
     if (!email) {
       setErrors((errors) => ({ ...errors, email: "Email is required" }));
-    } else if (!/^\S+@\S+$/.test(email)) {
-      setErrors((errors) => ({ ...errors, email: "Email is invalid" }));
-    }
-
-    // validate password
-    if (!password) {
+    } else if (!password) {
       setErrors((errors) => ({ ...errors, password: "Password is required" }));
-    } else if (password.length < 8) {
-      setErrors((errors) => ({
-        ...errors,
-        password: "Password must be at least 8 characters long",
-      }));
-    }
-    // validate confirmPassword
-    if (!confirmPassword) {
-      setErrors((errors) => ({
-        ...errors,
-        confirmPassword: "Confirm Password is required",
-      }));
     } else if (password !== confirmPassword) {
+      alert("Passwords do not match");
       setErrors((errors) => ({
         ...errors,
-        confirmPassword: "Passwords do not match",
+        password: "Passwords do not match",
       }));
-    }
-    // Check if there are any errors
-    if (Object.keys(errors).length > 0) {
-      console.log("errors:", errors);
-      return;
-    }
-    // else
-    setEmailRegister(email);
-    setPasswordogin(password);
-    setUserType(userType);
+    } else {
+      alert("Succsefully Registered");
+      setEmailRegister(email);
+      setPasswordogin(password);
+      setUserType(userType);
 
-    //caling function to send new user information to backend
-    sendNewUser(userType);
-    // Calling function to send to specific user creation page
-    optionSelected(userType);
-    alert("Succsefully Registered");
-  };
+      sendNewUser(); // Calling function to send new user information to backend
+      sendToProfileCreationPage(); // Calling function to send to specific user creation page
+    }
+  }; // end function handleRegistration
 
   //Function purpose to route to the google auth backend endpoint.
   const googleRegisterURl = `${process.env.REACT_APP_API_URL}/auth/auth/google/callback`;
@@ -113,7 +94,7 @@ function Register() {
   return (
     <div className={Style.RegisterWrapper}>
       <h2>Register</h2>
-      <form onSubmit={(event) => handleRegister(event)}>
+      <form onSubmit={(event) => handleRegistration(event)}>
         <label>
           <input
             type="email"

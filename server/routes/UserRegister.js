@@ -10,11 +10,6 @@ router.post("/cfo-register", function (req, res) {
 
 router.post("/customer-register", function (req, res) {
   console.log("customer-register");
-  console.log(
-    "email: ",
-    req.body.registerEmail,
-    "password: ",
-    req.body.registerPassword
-  );
+  console.log(req.body.registerEmail, req.body.registerPassword);
 });
 module.exports = router;
