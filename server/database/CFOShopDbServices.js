@@ -173,7 +173,7 @@ class CFOShopDbServices {
     try {
       //Queery statement to insert CFO profile information into Database
       const response = await new Promise((resolve, reject) => {
-        const sqlSelect = `SELECT email_address FROM Contact where email_address = ?";`;
+        const sqlSelect = `SELECT email_address FROM BodegaDB.Contact where email_address = ?";`;
 
         connection.query(sqlSelect, email, (err, resuslts) => {
           if (err) reject(new Error(err.message));
@@ -192,7 +192,7 @@ class CFOShopDbServices {
     try {
       //Queery statement to insert CFO profile information into Database
       const response = await new Promise((resolve, reject) => {
-        const sqlSelect = `SELECT phone_number FROM Contact where phone_number = ?;`;
+        const sqlSelect = `SELECT phone_number FROM BodegaDB.Contact where phone_number = ?;`;
 
         connection.query(sqlSelect, phoneNumber, (err, resuslts) => {
           if (err) reject(new Error(err.message));

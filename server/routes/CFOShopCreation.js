@@ -76,15 +76,15 @@ router.get("/testpage/", (req, res) => {
   //res.set('Access-Control-Allow-Origin', '*');
   const db = CfoShopDbServices.getCFOShopDbInstance();
 
-    const result = db.readAllCFOShops();
-    //console.log("test: ", result);
+  const result = db.readAllCFOShops();
+  //console.log("test: ", result);
 
-    //Send Data to Frontend
-    //result.then((CFOShops) => res.send(CFOShops));
-    result.then((CFOShops) => res.json(CFOShops));
-    //result.then((CFOShops) => console.log(CFOShops));
-    result.catch((err) => console.log(err));
-  });
+  //Send Data to Frontend
+  //result.then((CFOShops) => res.send(CFOShops));
+  result.then((CFOShops) => res.json(CFOShops));
+  //result.then((CFOShops) => console.log(CFOShops));
+  result.catch((err) => console.log(err));
+});
 
 //--------------------^-TESTING PAGE-----------------------01/05/2023 By Jonathan C.
 module.exports = router;
