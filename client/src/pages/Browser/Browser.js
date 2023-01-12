@@ -1,48 +1,70 @@
-import React, { useState } from "react";
-//import { Document, Page } from "@react-pdf/renderer";
-import Axios from "axios";
-//sShop Card
-//import ShopCard from "../../components/shopcard/ShopCard";
+//import React, { useState } from "react";
+//import Axios from "axios";
+import Style from "./browser.module.css";
 
-function Browser() {
-  const [cfoList, setCFOlist2] = useState([]);
-  const getCFOdata = () => {
-    Axios.get(
-      `${process.env.REACT_APP_API_URL}/CFO-Shop-Creation/CFOShop/`
-    ).then((response) => {
-      setCFOlist2(response.data);
-    });
+import React from "react";
+
+class Browser extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      businesses: [],  // array of food businesses to display
+      searchTerm: '',  // search term entered in search bar
+    };
+  }
+  
+  componentDidMount() {
+    // fetch list of businesses
+    fetch(`${process.env.REACT_APP_API_URL}/browser/browsing/`)
+      .then((response) => response.json())
+      .then((businesses) => {
+        this.setState({ businesses });
+      });
+  }
+
+  handleSearchChange = (event) => {
+    this.setState({ searchTerm: event.target.value });
   };
-  //const shopItems = cfoList.map((shop) => <ShopCard {...shop}></ShopCard>);
-  // Return statemnt should retur cards of CFO so the User can browse
-  return (
-    <div className="Browse CFO 2">
-      <h2>Browse For CFO's</h2>
-      <button onClick={getCFOdata}>SHOW CFO SHOP</button>
-      {cfoList.map((val, key) => {
-        return (
-          <div className="cfo">
-            <div>
-              <h3>CFO_Shop_Name: {val.CFO_Shop_Name}</h3>
-              <h3>CFO_firstname: {val.CFO_firstname}</h3>
-              <h3>CFO_midlename: {val.CFO_midlename}</h3>
-              <h3>CFO_lastname: {val.CFO_lastname}</h3>
-              <h3>food_tag: {val.CFO_food_tag}</h3>
-              <h3>website_link: {val.CFO_website_link}</h3>
-              <h3>review_score: {val.CFO_review_score}</h3>
-              <h3>address1: {val.address1}</h3>
-              <h3>address2: {val.address2}</h3>
-              <h3>state: {val.state}</h3>
-              <h3>city: {val.city}</h3>
-              <h3>zipcode: {val.zipcode}</h3>
-              <h3>phone_number: {val.phone_number}</h3>
-              <h3>emai_address: {val.email_address}</h3>
-            </div>
+
+
+  render() {
+    const { businesses, searchTerm } = this.state;
+
+    const filteredBusinesses = businesses.filter((business) =>
+      business.CFO_Shop_Name.toLowerCase().includes(searchTerm.toLowerCase()));
+
+    return (
+      <div className={Style.formdiv}>
+        <div className="search-bar">
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchTerm}
+            onChange={this.handleSearchChange}
+          />
+        </div>
+        {filteredBusinesses.map((business) => (
+          <div key={business.CFO_id} className="food-business">
+            <h2> </h2>
+            <h3>Food Business: {business.CFO_Shop_Name}</h3>
+            <p>
+              Owner: {business.CFO_firstname} {business.CFO_lastname}
+            </p>
+            <p>
+              Located at: {business.address1} {business.address2}
+            </p>
+            <p>
+              {business.state} {business.city} {business.zipcode}
+            </p>
+            <p>
+              Please Contact at: {business.phone_number} {business.email_address} {business.CFO_website_link}
+            </p>
+            <p>Food Tags: {business.CFO_food_tag}</p>
           </div>
-        ); //end inner return
-      })}
-    </div>
-  ); //end
-} //end Browser Page
+        ))}
+      </div>
+    );
+  }
+}
 
 export default Browser;

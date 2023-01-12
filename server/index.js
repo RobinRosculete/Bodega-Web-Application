@@ -42,8 +42,12 @@ const startServer = async () => {
   const userLogin = require("./routes/UserLogin");
   app.use("/User-Login/", userLogin);
 
+  const browserPageRoute = require("./routes/CFOShopCreation");
+  app.use("/browser/", browserPageRoute);
+
   const testPageRoute = require("./routes/CFOShopCreation");
   app.use("/Test-Page/", testPageRoute);
+
 
   app.get("/", (req, res) => {
     res.json({
