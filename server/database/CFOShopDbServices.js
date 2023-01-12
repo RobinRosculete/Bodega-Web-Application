@@ -168,6 +168,44 @@ class CFOShopDbServices {
     }
   } //end readCFOShopMenu method
 
+  //Fucntion purpose to check if CFO Email is already in database
+  async readCFOShopEmail(email) {
+    try {
+      //Queery statement to insert CFO profile information into Database
+      const response = await new Promise((resolve, reject) => {
+        const sqlSelect = `SELECT email_address FROM Contact where email_address = ?";`;
+
+        connection.query(sqlSelect, email, (err, resuslts) => {
+          if (err) reject(new Error(err.message));
+          resolve(resuslts);
+        });
+      });
+
+      return response;
+    } catch (error) {
+      console.log(error);
+    }
+  } //end readCFOShopEmail method
+
+  //Fucntion purpose to check if CFO PhoneNumber is in is already in database
+  async readCFOShopPhoneNumber(phoneNumber) {
+    try {
+      //Queery statement to insert CFO profile information into Database
+      const response = await new Promise((resolve, reject) => {
+        const sqlSelect = `SELECT phone_number FROM Contact where phone_number = ?;`;
+
+        connection.query(sqlSelect, phoneNumber, (err, resuslts) => {
+          if (err) reject(new Error(err.message));
+          resolve(resuslts);
+        });
+      });
+
+      return response;
+    } catch (error) {
+      console.log(error);
+    }
+  } //end readCFOShopPhoneNumber method
+
   //Fucntion purpose to pull CFO personal Website link from Database (COMPLETE)
   async readCFOShopWebsite(CFOId) {
     try {

@@ -1,9 +1,8 @@
 /* Feature not completed, feature work: 
-
     1. Improve Form validation, and error handling
     2. Password Encription
     3. Verify if user exists, or if he need to register
-    5. Refactor code to make it more connsistent, organizes and efficient
+    5. Refactor code to make it more connsistent, organized and efficient
     6. Complete Google Authentication
 */
 

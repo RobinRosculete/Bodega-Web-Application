@@ -3,7 +3,7 @@
     2. Password Encription
     3. Verify if user already exists
     4. verify if new information, like password or email is already in the DB
-    5. Refactor code to make it more connsistent, organizes and efficient
+    5. Refactor code to make it more connsistent, organized and efficient
     6. Complete Google Authentication
 */
 
