@@ -70,7 +70,7 @@ router.get("/CFOShop/", (req, res) => {
   });
 });
 
-//--------------------v-TESTING PAGE-----------------------01/05/2023 By Jonathan C.
+//--------------------v-TESTING PAGE-----------------------01/11/2023 By Jonathan C.
 ///Function purpose to get CFO shop information by ID
 router.get("/testpage/", (req, res) => {
   //res.set('Access-Control-Allow-Origin', '*');
@@ -86,5 +86,20 @@ router.get("/testpage/", (req, res) => {
   result.catch((err) => console.log(err));
 });
 
-//--------------------^-TESTING PAGE-----------------------01/05/2023 By Jonathan C.
+
+router.get("/browsing/", (req, res) => {
+  //res.set('Access-Control-Allow-Origin', '*');
+  const db = CfoShopDbServices.getCFOShopDbInstance();
+
+    const result = db.readAllCFOShops();
+    //console.log("test: ", result);
+
+    //Send Data to Frontend
+    //result.then((CFOShops) => res.send(CFOShops));
+    result.then((CFOShops) => res.json(CFOShops));
+    //result.then((CFOShops) => console.log(CFOShops));
+    result.catch((err) => console.log(err));
+  });
+
+//--------------------^-TESTING PAGE-----------------------01/11/2023 By Jonathan C.
 module.exports = router;

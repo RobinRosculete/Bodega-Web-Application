@@ -15,7 +15,7 @@ function Header() {
           <Link to="/">Home</Link>
         </li>
         <li className={styles.navli}>
-          <Link to="/browser">Browse Shops</Link>
+          <Link to="/browser">Browse and Search Shops</Link>
         </li>
         <li className={styles.navli}>
           <Link to="/CFO-Shop-Creation">Create CFO Shop</Link>
