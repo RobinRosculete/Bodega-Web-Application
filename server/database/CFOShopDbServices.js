@@ -169,15 +169,17 @@ class CFOShopDbServices {
   } //end readCFOShopMenu method
 
   //Fucntion purpose to check if CFO Email is already in database
-  async readCFOShopEmail(email) {
+  async checkEmailExists(email) {
     try {
       //Queery statement to insert CFO profile information into Database
       const response = await new Promise((resolve, reject) => {
-        const sqlSelect = `SELECT email_address FROM BodegaDB.Contact where email_address = ?";`;
+        const sqlSelect = `SELECT email_address FROM BodegaDB.Contact where email_address = ?;`;
 
         connection.query(sqlSelect, email, (err, resuslts) => {
           if (err) reject(new Error(err.message));
-          resolve(resuslts);
+          if (resuslts.length > 0) {
+            resolve(true);
+          } else reject(false);
         });
       });
 
