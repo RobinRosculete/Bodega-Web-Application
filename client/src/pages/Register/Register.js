@@ -81,7 +81,7 @@ function Register() {
 
       sendNewUser(); // Calling function to send new user information to backend
 
-      //sendToProfileCreationPage(); // Calling function to send to specific user creation page
+      sendToProfileCreationPage(); // Calling function to send to specific user creation page
     }
   }; // end function handleRegistration
 
