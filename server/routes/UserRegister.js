@@ -9,22 +9,20 @@ router.post("/cfo-register", function (req, res) {
   const email = req.body.registerEmail;
   const password = req.body.registerPassword;
   const registerCFOInsertData = [email, password];
-  console.log("Register Data: ", registerCFOInsertData);
+  console.log("CFO Register Data: ", registerCFOInsertData);
 
   db.createNewCFOAccount(registerCFOInsertData);
 });
 
 router.post("/customer-register", function (req, res) {
   const email = req.body.registerEmail;
-  const db = CfoShopDbServices.getCFOShopDbInstance();
+  const password = req.body.registerPassword;
+  const db = LoginDbServices.getLoginDbInstance();
+  const registerCustomerInsertData = [email, password];
+  console.log("Customer Register Data: ", registerCustomerInsertData);
 
-  console.log(req.body.registerEmail, req.body.registerPassword);
-
+  db.createNewCustomerAccount(registerCustomerInsertData);
   //Code to store new user information in databas...
 });
 
-router.post("/customer-register", function (req, res) {
-  console.log("customer-register");
-  console.log(req.body.registerEmail, req.body.registerPassword);
-});
 module.exports = router;
