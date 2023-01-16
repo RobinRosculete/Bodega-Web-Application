@@ -13,15 +13,18 @@ class CustomerDbServices {
     try {
       //Queery statement to insert Customer profile information into Database
       const response = await new Promise((resolve, reject) => {
-        const sqlInsert = `INSERT INTO BodegaDB.Customer 
-        (customer_firstname, customer_midlename, customer_lastname)
-        VALUES (?, ?, ?);
-        Select LAST_INSERT_ID() into @tempid_customer;
-        INSERT INTO BodegaDB.Address (address1, address2, state, city, zipcode, Customer_address_id)
-        VALUES (?, ?, ?, ?, ?, @tempid_customer); 
+        const sqlInsert = `SELECT LAST_INSERT_ID() INTO  @tempid_customer;
+        UPDATE BodegaDB.Customer SET
+           customer_firstname = ?,
+           customer_midlename =?,
+           customer_lastname = ?
+          WHERE customer_id =  @tempid_customer;
+         INSERT INTO BodegaDB.Address (address1, address2, state, city, zipcode, Customer_address_id)
+        VALUES (?, ?, ?, ?,?, @tempid_customer); 
         INSERT INTO BodegaDB.Contact (
         phone_number,email_address,Customer_contact_id)
-        VALUES (?, ?,@tempid_customer);`;
+        VALUES (?, ?,@tempid_customer);
+`;
 
         connection.query(sqlInsert, CustomerInsertData, (err, resuslts) => {
           if (err) reject(new Error(err.message));
