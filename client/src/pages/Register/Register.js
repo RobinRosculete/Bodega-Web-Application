@@ -33,6 +33,11 @@ function Register() {
 
   //Function purpose to Send new user to the backend to store in the Database
   const sendNewUser = () => {
+    const config = {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    };
     //Checking if new user is CFO or  user it a Customer Account
     let registerUrl = "";
     if (userType === "CFO") {
@@ -41,10 +46,14 @@ function Register() {
       registerUrl = `${process.env.REACT_APP_API_URL}/customer-register`;
     }
 
-    Axios.post(registerUrl, {
-      registerEmail: registerEmail,
-      registerPassword: registerPassword,
-    })
+    Axios.post(
+      registerUrl,
+      {
+        registerEmail: registerEmail,
+        registerPassword: registerPassword,
+      },
+      config
+    )
       .then((response) => {
         console.log(response);
         alert(response.message);
@@ -81,7 +90,7 @@ function Register() {
 
       sendNewUser(); // Calling function to send new user information to backend
 
-      sendToProfileCreationPage(); // Calling function to send to specific user creation page
+      // sendToProfileCreationPage(); // Calling function to send to specific user creation page
     }
   }; // end function handleRegistration
 

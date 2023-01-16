@@ -7,7 +7,7 @@ class LoginDbServices {
   }
 
   //Fiunction purpose to store a new user in the database
-  async createNewCFOAccount(LoginInsertData) {
+  async createNewCFOAccount(registerCFOInsertData) {
     try {
       //Queery statement to insert CFO profile information into Database
       const response = await new Promise((resolve, reject) => {
@@ -15,7 +15,7 @@ class LoginDbServices {
                            SELECT LAST_INSERT_ID() into @tempid_login;
                            INSERT INTO BodegaDB.CFO_Shop (Login_id) VALUES (@tempid_login);`;
 
-        connection.query(sqlInsert, LoginInsertData, (err, resuslts) => {
+        connection.query(sqlInsert, registerCFOInsertData, (err, resuslts) => {
           if (err) reject(new Error(err.message));
           resolve(resuslts);
         });
@@ -44,8 +44,9 @@ class LoginDbServices {
 
       return response;
     } catch (error) {
-      console.log("we hit but..");
       console.log(error);
     }
   }
 }
+
+module.exports = LoginDbServices;

@@ -2,9 +2,19 @@
 const express = require("express");
 //const app = require("../config/app");
 const router = express.Router();
-const CfoShopDbServices = require("../database/CFOShopDbServices");
+const LoginDbServices = require("../database/LoginDbServices");
 
 router.post("/cfo-register", function (req, res) {
+  const db = LoginDbServices.getLoginDbInstance();
+  const email = req.body.registerEmail;
+  const password = req.body.registerPassword;
+  const registerCFOInsertData = [email, password];
+  console.log("Register Data: ", registerCFOInsertData);
+
+  db.createNewCFOAccount(registerCFOInsertData);
+});
+
+router.post("/customer-register", function (req, res) {
   const email = req.body.registerEmail;
   const db = CfoShopDbServices.getCFOShopDbInstance();
 
