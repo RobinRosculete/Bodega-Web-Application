@@ -13,10 +13,10 @@ import Axios from "axios";
 
 function Login() {
   const [errors, setErrors] = useState({}); // States used for input error handeling
-  const [emailLogin, setEmailLogin] = useState(""); // Sate used to store input email
+  const [emailLogin, setEmailLogin] = useState(""); // State used to store input email
   const [passwordLogin, setPasswordogin] = useState(""); //State used to store account password
 
-  // Function purpose to handle login, and error check input before sending to baackend
+  // Function purpose to handle login, and error check input before sending to backend
   const handleLogin = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -38,6 +38,7 @@ function Login() {
         passwordLogin: passwordLogin,
       })
         .then((response) => {
+          //Axios.post(`${process.env.REACT_APP_API_URL}/Test-Page`,{response})
           console.log(response);
         })
         .catch((err) => {
