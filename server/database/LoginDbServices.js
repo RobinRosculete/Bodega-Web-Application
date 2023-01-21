@@ -64,7 +64,7 @@ class LoginDbServices {
       //Query statement to retrieve CFO profile information from Database
       const response = await new Promise((resolve, reject) => {
         const sqlSelect = `SELECT login_id FROM BodegaDB.Login WHERE BodegaDB.Login.login_email = ? AND BodegaDB.Login.login_password = ? INTO @tempid_login;
-                           SELECT CFO_Shop_Name, CFO_firstname, CFO_midlename, CFO_lastname, CFO_food_tag, CFO_website_link, 
+                           SELECT CFO_id, CFO_Shop_Name, CFO_firstname, CFO_midlename, CFO_lastname, CFO_food_tag, CFO_website_link, 
                            address1, address2, state, city, zipcode, phone_number, email_address
                            FROM BodegaDB.CFO_Shop
                            INNER JOIN BodegaDB.Address ON BodegaDB.CFO_Shop.CFO_id = BodegaDB.Address.CFO_Shop_Id 

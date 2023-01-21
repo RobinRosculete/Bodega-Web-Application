@@ -15,6 +15,8 @@ function Login() {
   const [errors, setErrors] = useState({}); // States used for input error handeling
   const [emailLogin, setEmailLogin] = useState(""); // State used to store input email
   const [passwordLogin, setPasswordogin] = useState(""); //State used to store account password
+  const [dataObject, setData] = useState([]);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   // Function purpose to handle login, and error check input before sending to backend
   const handleLogin = (event) => {
@@ -38,8 +40,10 @@ function Login() {
         passwordLogin: passwordLogin,
       })
         .then((response) => {
-          //Axios.post(`${process.env.REACT_APP_API_URL}/Test-Page`,{response})
-          console.log(response);
+          //response.json();
+          console.log(response.data);
+          setData(response.data);
+          verificationOfLogin();
         })
         .catch((err) => {
           console(err);
@@ -47,13 +51,49 @@ function Login() {
     }
   };
 
+
+    function verificationOfLogin() {
+      if(emailLogin === 'testdata@gmail.com' && passwordLogin === '12345678'){
+        console.log(dataObject);
+        setLoggedIn(true);
+      }
+      else{
+        setLoggedIn(false);
+      }
+    }
+
+
+
+  /*
   const googleLoginURl = `${process.env.REACT_APP_API_URL}/auth/auth/google/callback`;
   //Calling google auth api for login with google
   const googleAuth = () => {
     window.open(googleLoginURl, "_self");
   };
+  */
 
   return (
+  <div>{loggedIn && <h1> Login Verified. </h1>}
+       {loggedIn && dataObject[1].map((record) => (
+          <div key={record.CFO_id} className="food-business">
+            <h2> </h2>
+            <h3>Food Business: {record.CFO_Shop_Name}</h3>
+            <p>
+              Owner: {record.CFO_firstname} {record.CFO_lastname}
+            </p>
+            <p>
+              Located at: {record.address1} {record.address2}
+            </p>
+            <p>
+              {record.state} {record.city} {record.zipcode}
+            </p>
+            <p>
+              Please Contact at: {record.phone_number} {record.email_address} {record.CFO_website_link}
+            </p>
+            <p>Food Tags: {record.CFO_food_tag}</p>
+          </div>
+        ))}
+
     <div className={Style.LoginWrapper}>
       <h2>Log In </h2>
       <form onSubmit={(event) => handleLogin(event)}>
@@ -83,7 +123,7 @@ function Login() {
         </label>
 
         <div>
-          <button type="submit" className={Style.submitButton}>
+          <button type="submit" onClick={verificationOfLogin} className={Style.submitButton}>
             Log in
           </button>
         </div>
@@ -96,10 +136,13 @@ function Login() {
           </button>
         </Link>
       </div>
-      <button className={Style.GoogleLogin} onClick={googleAuth}>
+      <button className={Style.GoogleLogin}>
         <span>Sign in with Google</span>
       </button>
     </div>
+
+  </div>
+    
   );
 }
 
