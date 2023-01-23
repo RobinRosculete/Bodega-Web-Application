@@ -11,11 +11,13 @@ import { Link } from "react-router-dom";
 import Style from "./login.module.css";
 import Axios from "axios";
 
+
 function Login() {
   const [errors, setErrors] = useState({}); // States used for input error handeling
   const [emailLogin, setEmailLogin] = useState(""); // State used to store input email
   const [passwordLogin, setPasswordogin] = useState(""); //State used to store account password
-  const [dataObject, setData] = useState([]);
+  const [idLogin, setLoginID] = useState(0);
+  const [dataObject, setDataObject] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
 
   // Function purpose to handle login, and error check input before sending to backend
@@ -34,33 +36,55 @@ function Login() {
       setPasswordogin(password);
 
       const loginURL = `${process.env.REACT_APP_API_URL}/User-Login/login`;
-      //Send login information to backend
+      //Send login email and login password to backend
       Axios.post(loginURL, {
         emailLogin: emailLogin,
         passwordLogin: passwordLogin,
       })
         .then((response) => {
-          //response.json();
+          console.log(response);
           console.log(response.data);
-          setData(response.data);
-          verificationOfLogin();
+          if(Object.keys(response.data).length !== 0){
+            setLoginID(response.data);
+          }
         })
         .catch((err) => {
           console(err);
         });
-    }
+
+
+    }//end else statement
   };
 
 
+  
     function verificationOfLogin() {
-      if(emailLogin === 'testdata@gmail.com' && passwordLogin === '12345678'){
-        console.log(dataObject);
+      if(idLogin !== 0){
+        console.log(idLogin);
         setLoggedIn(true);
+
+        const loginURL2 = `${process.env.REACT_APP_API_URL}/User-Login/login2`;
+        //Send loginID information to backend
+        Axios.post(loginURL2, {
+          idLogin: idLogin,
+        })
+          .then((response) => {
+            console.log(response);
+            console.log(response.data);
+            if(Object.keys(response.data).length !== 0){
+              setDataObject(response.data);
+            }
+          })
+          .catch((err) => {
+            console(err);
+          });
+  
       }
       else{
         setLoggedIn(false);
       }
-    }
+
+    }//end function
 
 
 
@@ -74,7 +98,7 @@ function Login() {
 
   return (
   <div>{loggedIn && <h1> Login Verified. </h1>}
-       {loggedIn && dataObject[1].map((record) => (
+       {loggedIn && dataObject.map((record) => (
           <div key={record.CFO_id} className="food-business">
             <h2> </h2>
             <h3>Food Business: {record.CFO_Shop_Name}</h3>
