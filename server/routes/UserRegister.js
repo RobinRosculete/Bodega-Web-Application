@@ -11,7 +11,7 @@ router.post("/cfo-register", function (req, res) {
   const registerCFOInsertData = [email, password];
   console.log("CFO Register Data: ", registerCFOInsertData);
 
-  db.createNewCFOAccount(registerCFOInsertData);
+  //db.createNewCFOAccount(registerCFOInsertData);
 });
 
 router.post("/customer-register", function (req, res) {
@@ -21,7 +21,7 @@ router.post("/customer-register", function (req, res) {
   const registerCustomerInsertData = [email, password];
   console.log("Customer Register Data: ", registerCustomerInsertData);
 
-  db.createNewCustomerAccount(registerCustomerInsertData);
+  //db.createNewCustomerAccount(registerCustomerInsertData);
   //Code to store new user information in databas...
 });
 
