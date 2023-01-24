@@ -15,7 +15,7 @@ import Axios from "axios";
 function Login() {
   const [errors, setErrors] = useState({}); // States used for input error handeling
   const [emailLogin, setEmailLogin] = useState(""); // State used to store input email
-  const [passwordLogin, setPasswordogin] = useState(""); //State used to store account password
+  const [passwordLogin, setPasswordLogin] = useState(""); //State used to store account password
   const [idLogin, setLoginID] = useState(0);
   const [dataObject, setDataObject] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
@@ -26,6 +26,8 @@ function Login() {
     const formData = new FormData(event.target);
     const email = formData.get("email");
     const password = formData.get("password");
+    console.log("Email is currently: ", email);
+    console.log("Password is currently: ", password);
 
     if (!email) {
       setErrors((errors) => ({ ...errors, email: "Email is required" }));
@@ -33,19 +35,21 @@ function Login() {
       setErrors((errors) => ({ ...errors, password: "Password is required" }));
     } else {
       setEmailLogin(email);
-      setPasswordogin(password);
+      setPasswordLogin(password);
 
       const loginURL = `${process.env.REACT_APP_API_URL}/User-Login/login`;
       //Send login email and login password to backend
       Axios.post(loginURL, {
-        emailLogin: emailLogin,
-        passwordLogin: passwordLogin,
+        //Using email and password variables directly to prevent initialization with blank variables
+        emailLogin: email,
+        passwordLogin: password,
       })
         .then((response) => {
           console.log(response);
           console.log(response.data);
           if(Object.keys(response.data).length !== 0){
             setLoginID(response.data);
+            verificationOfLogin(response.data);
           }
         })
         .catch((err) => {
@@ -58,15 +62,15 @@ function Login() {
 
 
   
-    function verificationOfLogin() {
-      if(idLogin !== 0){
-        console.log(idLogin);
+    function verificationOfLogin(id_number) {
+      if(id_number !== 0){
+        console.log(id_number);
         setLoggedIn(true);
 
         const loginURL2 = `${process.env.REACT_APP_API_URL}/User-Login/login2`;
         //Send loginID information to backend
         Axios.post(loginURL2, {
-          idLogin: idLogin,
+          idLogin: id_number,
         })
           .then((response) => {
             console.log(response);
