@@ -45,11 +45,13 @@ function Login() {
         passwordLogin: password,
       })
         .then((response) => {
-          console.log(response);
-          console.log(response.data);
+          console.log("response: ", response);
+          console.log("response.data: ", response.data);
+          console.log("response.data[0]: ", response.data[0]);
+          console.log("response.data[0].login_id: ", response.data[0].login_id);
           if(Object.keys(response.data).length !== 0){
             setLoginID(response.data);
-            verificationOfLogin(response.data);
+            verificationOfLogin(response.data[0].login_id);
           }
         })
         .catch((err) => {
@@ -64,20 +66,20 @@ function Login() {
   
     function verificationOfLogin(id_number) {
       if(id_number !== 0){
-        console.log(id_number);
+        console.log("In verificationOfLogin function: ", id_number);
         setLoggedIn(true);
 
-        const loginURL2 = `${process.env.REACT_APP_API_URL}/User-Login/login2`;
+        const loginURLa = `${process.env.REACT_APP_API_URL}/User-Login/logina`;
         //Send loginID information to backend
-        Axios.post(loginURL2, {
+        Axios.post(loginURLa, {
           idLogin: id_number,
         })
           .then((response) => {
-            console.log(response);
-            console.log(response.data);
-            if(Object.keys(response.data).length !== 0){
-              setDataObject(response.data);
-            }
+            //console.log("Response: ", response);
+            //console.log("Response.data: ", response.data);
+            //if(Object.keys(response.data).length !== 0){
+            setDataObject(response.data);
+            //}
           })
           .catch((err) => {
             console(err);

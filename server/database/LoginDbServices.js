@@ -114,7 +114,7 @@ class LoginDbServices {
                              FROM BodegaDB.CFO_Shop
                              INNER JOIN BodegaDB.Address ON BodegaDB.CFO_Shop.CFO_id = BodegaDB.Address.CFO_Shop_Id 
                              INNER JOIN BodegaDB.Contact ON BodegaDB.CFO_Shop.CFO_id = BodegaDB.Contact.CFO_Shop_id
-                             WHERE BodegaDB.CFO_Shop.login_id = ?;`
+                             WHERE BodegaDB.CFO_Shop.Login_id = ?;`
           
           connection.query(sqlSelect, LoginSelectID, (err, results) => {
             if (err) reject(new Error(err.message));
