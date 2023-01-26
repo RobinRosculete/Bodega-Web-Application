@@ -48,13 +48,18 @@ function Login() {
           console.log("response: ", response);
           console.log("response.data: ", response.data);
           console.log("response.data[0]: ", response.data[0]);
-          console.log("response.data[0].login_id: ", response.data[0].login_id);
+          console.log("Object.keys(response.data).length: ", Object.keys(response.data).length);
+
           if(Object.keys(response.data).length !== 0){
-            setLoginID(response.data);
+            console.log("response.data[0].login_id: ", response.data[0].login_id);
+            setLoginID(response.data[0].login_id);
             verificationOfLogin(response.data[0].login_id);
+          }else{
+            setLoggedIn(false);
           }
         })
         .catch((err) => {
+          setLoggedIn(false);
           console(err);
         });
 
@@ -75,11 +80,7 @@ function Login() {
           idLogin: id_number,
         })
           .then((response) => {
-            //console.log("Response: ", response);
-            //console.log("Response.data: ", response.data);
-            //if(Object.keys(response.data).length !== 0){
             setDataObject(response.data);
-            //}
           })
           .catch((err) => {
             console(err);
