@@ -54,9 +54,9 @@ class LoginDbServices {
 
 
 
-
-
-
+//--------------------------------------------------------------------------------------------
+//Login Functionality Queries
+//--------------------------------------------------------------------------------------------
   //Function to retrieve Login ID only based on login_email & login_password.
   async selectLoginID(LoginSelectData) {
     try {
