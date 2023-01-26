@@ -2,6 +2,7 @@ const express = require("express");
 const LoginDbServices = require("../database/LoginDbServices");
 const router = express.Router();
 
+//Login Verification, returns LoginID
 router.post("/login", (req, res) => {
   const db = LoginDbServices.getLoginDbInstance();
   const emailLogin = req.body.emailLogin;
@@ -22,6 +23,7 @@ router.post("/login", (req, res) => {
   result.catch((err) => console.log(err));
 });
 
+//CFO Shop Login ID retrieval
 router.post("/logina", (req, res) => {
   const db = LoginDbServices.getLoginDbInstance();
   const idLogin = req.body.idLogin;
@@ -32,15 +34,34 @@ router.post("/logina", (req, res) => {
 
   console.log("ID is now in backend: ", idLogin);
 
-
   var result = db.selectCFOShopByLoginID(idLogin);
-
 
   result.then((CFOShops) => res.send(CFOShops));
   //result.then((CFOShops) => res.json(CFOShops));
   result.catch((err) => console.log(err));
 
 });
+
+
+//Customer Login ID retrieval
+router.post("/loginb", (req, res) => {
+  const db = LoginDbServices.getLoginDbInstance();
+  const idLogin = req.body.idLogin;
+
+  //const selectVariables = [
+  //  idLogin,
+  //];
+
+  console.log("ID is now in backend: ", idLogin);
+
+  var result = db.selectCustomerByLoginID(idLogin);
+
+  result.then((Customers) => res.send(Customers));
+  //result.then((CFOShops) => res.json(CFOShops));
+  result.catch((err) => console.log(err));
+
+});
+
 
 
 module.exports = router;

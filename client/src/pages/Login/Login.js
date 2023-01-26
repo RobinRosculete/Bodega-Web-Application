@@ -17,8 +17,11 @@ function Login() {
   const [emailLogin, setEmailLogin] = useState(""); // State used to store input email
   const [passwordLogin, setPasswordLogin] = useState(""); //State used to store account password
   const [idLogin, setLoginID] = useState(0);
-  const [dataObject, setDataObject] = useState([]);
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [dataObjectA, setDataObjectA] = useState([]);
+  const [dataObjectB, setDataObjectB] = useState([]);
+  const [loggedInA, setLoggedInA] = useState(false);
+  const [loggedInB, setLoggedInB] = useState(false);
+
 
   // Function purpose to handle login, and error check input before sending to backend
   const handleLogin = (event) => {
@@ -50,16 +53,23 @@ function Login() {
           console.log("response.data[0]: ", response.data[0]);
           console.log("Object.keys(response.data).length: ", Object.keys(response.data).length);
 
-          if(Object.keys(response.data).length !== 0){
+          //if(Object.keys(response.data).length !== 0){
+          if(response.data[0] !== undefined){
+
             console.log("response.data[0].login_id: ", response.data[0].login_id);
             setLoginID(response.data[0].login_id);
-            verificationOfLogin(response.data[0].login_id);
+
+            Customer_Verifying(response.data[0].login_id);
+            CFO_Verifying(response.data[0].login_id);
+
           }else{
-            setLoggedIn(false);
+            setLoggedInA(false);
+            setLoggedInB(false);
           }
         })
         .catch((err) => {
-          setLoggedIn(false);
+          setLoggedInA(false);
+          setLoggedInB(false);
           console(err);
         });
 
@@ -68,29 +78,57 @@ function Login() {
   };
 
 
-  
-    function verificationOfLogin(id_number) {
-      if(id_number !== 0){
-        console.log("In verificationOfLogin function: ", id_number);
-        setLoggedIn(true);
 
-        const loginURLa = `${process.env.REACT_APP_API_URL}/User-Login/logina`;
+  function CFO_Verifying(id_number) {
+    if(id_number !== 0){
+      console.log("In CFO_Verifying function: ", id_number);
+      
+      const loginURLa = `${process.env.REACT_APP_API_URL}/User-Login/logina`;
+      //Send loginID information to backend
+      Axios.post(loginURLa, {
+        idLogin: id_number,
+      })
+        .then((response) => {
+          if(response.data[0] !== undefined){
+            setDataObjectA(response.data);
+            setLoggedInA(true);
+          }else{
+            setLoggedInA(false);
+          }
+        })
+        .catch((err) => {
+          console(err);
+        });
+    }
+    else{
+      setLoggedInA(false);
+    }
+  }//end function
+
+    function Customer_Verifying(id_number) {
+      if(id_number !== 0){
+        console.log("In Customer_Verifying function: ", id_number);
+
+        const loginURLa = `${process.env.REACT_APP_API_URL}/User-Login/loginb`;
         //Send loginID information to backend
         Axios.post(loginURLa, {
           idLogin: id_number,
         })
           .then((response) => {
-            setDataObject(response.data);
+            if(response.data[0] !== undefined){
+              setDataObjectB(response.data);
+              setLoggedInB(true);
+            }else{
+              setLoggedInB(false);
+            }
           })
           .catch((err) => {
             console(err);
           });
-  
       }
       else{
-        setLoggedIn(false);
+        setLoggedInB(false);
       }
-
     }//end function
 
 
@@ -104,8 +142,8 @@ function Login() {
   */
 
   return (
-  <div>{loggedIn && <h1> Login Verified. </h1>}
-       {loggedIn && dataObject.map((record) => (
+  <div>{loggedInA && <h1> Login Verified. </h1>}
+       {loggedInA && dataObjectA.map((record) => (
           <div key={record.CFO_id} className="food-business">
             <h2> </h2>
             <h3>Food Business: {record.CFO_Shop_Name}</h3>
@@ -122,6 +160,25 @@ function Login() {
               Please Contact at: {record.phone_number} {record.email_address} {record.CFO_website_link}
             </p>
             <p>Food Tags: {record.CFO_food_tag}</p>
+          </div>
+        ))}
+        {loggedInB && <h1> Login Verified. </h1>}
+        {loggedInB && dataObjectB.map((record) => (
+          <div key={record.customer_id} className="food-business">
+            <h2> </h2>
+            <h3>Customer Account: {record.customer_id}</h3>
+            <p>
+              My Name: {record.customer_firstname} {record.customer_lastname}
+            </p>
+            <p>
+              Currently Living At: {record.address1} {record.address2}
+            </p>
+            <p>
+              {record.state} {record.city} {record.zipcode}
+            </p>
+            <p>
+              My Phone and Email: {record.phone_number} {record.email_address}
+            </p>
           </div>
         ))}
 
@@ -154,7 +211,7 @@ function Login() {
         </label>
 
         <div>
-          <button type="submit" onClick={verificationOfLogin} className={Style.submitButton}>
+          <button type="submit" className={Style.submitButton}>
             Log in
           </button>
         </div>

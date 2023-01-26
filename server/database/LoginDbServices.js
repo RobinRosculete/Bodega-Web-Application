@@ -57,33 +57,6 @@ class LoginDbServices {
 
 
 
-
-  //Function to retrieve CFO information based on matching Login ID.
-  async selectCFOLogin(LoginSelectData) {
-    try {
-      //Query statement to retrieve CFO profile information from Database
-      const response = await new Promise((resolve, reject) => {
-        const sqlSelect = `SELECT login_id FROM BodegaDB.Login WHERE BodegaDB.Login.login_email = ? AND BodegaDB.Login.login_password = ? INTO @tempid_login;
-                           SELECT CFO_id, CFO_Shop_Name, CFO_firstname, CFO_midlename, CFO_lastname, CFO_food_tag, CFO_website_link, 
-                           address1, address2, state, city, zipcode, phone_number, email_address
-                           FROM BodegaDB.CFO_Shop
-                           INNER JOIN BodegaDB.Address ON BodegaDB.CFO_Shop.CFO_id = BodegaDB.Address.CFO_Shop_Id 
-                           INNER JOIN BodegaDB.Contact ON BodegaDB.CFO_Shop.CFO_id = BodegaDB.Contact.CFO_Shop_id
-                           WHERE BodegaDB.CFO_Shop.login_id = @tempid_login;`
-        
-        connection.query(sqlSelect, LoginSelectData, (err, results) => {
-          if (err) reject(new Error(err.message));
-          resolve(results);
-        });
-      });
-
-      return response;
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  
   //Function to retrieve Login ID only based on login_email & login_password.
   async selectLoginID(LoginSelectData) {
     try {
@@ -115,6 +88,31 @@ class LoginDbServices {
                              INNER JOIN BodegaDB.Address ON BodegaDB.CFO_Shop.CFO_id = BodegaDB.Address.CFO_Shop_Id 
                              INNER JOIN BodegaDB.Contact ON BodegaDB.CFO_Shop.CFO_id = BodegaDB.Contact.CFO_Shop_id
                              WHERE BodegaDB.CFO_Shop.Login_id = ?;`
+          
+          connection.query(sqlSelect, LoginSelectID, (err, results) => {
+            if (err) reject(new Error(err.message));
+            resolve(results);
+          });
+        });
+  
+        return response;
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+
+    //Function to retrieve CFO information based on matching Login ID.
+    async selectCustomerByLoginID(LoginSelectID) {
+      try {
+        //Query statement to retrieve CFO profile information from Database
+        const response = await new Promise((resolve, reject) => {
+          const sqlSelect = `SELECT customer_id, customer_firstname, customer_midlename, customer_lastname, 
+                             address1, address2, state, city, zipcode, phone_number, email_address
+                             FROM BodegaDB.Customer
+                             INNER JOIN BodegaDB.Address ON BodegaDB.Customer.customer_id = BodegaDB.Address.Customer_address_id
+                             INNER JOIN BodegaDB.Contact ON BodegaDB.Customer.customer_id = BodegaDB.Contact.Customer_contact_id
+                             WHERE BodegaDB.Customer.Login_id = ?;`
           
           connection.query(sqlSelect, LoginSelectID, (err, results) => {
             if (err) reject(new Error(err.message));
