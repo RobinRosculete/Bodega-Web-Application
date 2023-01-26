@@ -5,6 +5,7 @@
     4. verify if new information, like password or email is already in the DB
     5. Refactor code to make it more connsistent, organized and efficient
     6. Complete Google Authentication
+   *7. Fix axios.post bug, sending empty body when pressing register button for the first time
 */
 
 import React, { useState } from "react";
@@ -32,7 +33,7 @@ function Register() {
   }; // end function sendToProfileCreationPage
 
   //Function purpose to Send new user to the backend to store in the Database
-  const sendNewUser = () => {
+  const sendNewUser = (email, password) => {
     //Checking if new user is CFO or  user it a Customer Account
     let registerUrl = "";
     if (userType === "CFO") {
@@ -42,8 +43,8 @@ function Register() {
     }
 
     Axios.post(registerUrl, {
-      registerEmail: registerEmail,
-      registerPassword: registerPassword,
+      registerEmail: email,
+      registerPassword: password,
     })
       .then((response) => {
         console.log(response);
@@ -78,10 +79,9 @@ function Register() {
       setEmailRegister(email);
       setPasswordogin(password);
       setUserType(userType);
+      sendNewUser(email, password); // Calling function to send new user information to backend
 
-      sendNewUser(); // Calling function to send new user information to backend
-
-      sendToProfileCreationPage(); // Calling function to send to specific user creation page
+      //sendToProfileCreationPage(); // Calling function to send to specific user creation page
     }
   }; // end function handleRegistration
 
