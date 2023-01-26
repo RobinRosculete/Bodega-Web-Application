@@ -1,10 +1,4 @@
-/* Feature not completed, feature work: 
-    1. Improve Form validation, and error handling
-    2. Password Encription
-    3. Verify if user exists, or if he need to register
-    5. Refactor code to make it more connsistent, organized and efficient
-    6. Complete Google Authentication
-*/
+/* All Login functionality features completed by Jonathan Cordova on 01/26/2023:*/
 
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
@@ -14,9 +8,9 @@ import Axios from "axios";
 
 function Login() {
   const [errors, setErrors] = useState({}); // States used for input error handeling
-  const [emailLogin, setEmailLogin] = useState(""); // State used to store input email
-  const [passwordLogin, setPasswordLogin] = useState(""); //State used to store account password
-  const [idLogin, setLoginID] = useState(0);
+  //const [emailLogin, setEmailLogin] = useState(""); // State used to store input email
+  //const [passwordLogin, setPasswordLogin] = useState(""); //State used to store account password
+  //const [idLogin, setLoginID] = useState(0);
   const [dataObjectA, setDataObjectA] = useState([]);
   const [dataObjectB, setDataObjectB] = useState([]);
   const [loggedInA, setLoggedInA] = useState(false);
@@ -37,8 +31,8 @@ function Login() {
     } else if (!password) {
       setErrors((errors) => ({ ...errors, password: "Password is required" }));
     } else {
-      setEmailLogin(email);
-      setPasswordLogin(password);
+      //setEmailLogin(email);
+      //setPasswordLogin(password);
 
       const loginURL = `${process.env.REACT_APP_API_URL}/User-Login/login`;
       //Send login email and login password to backend
@@ -53,11 +47,10 @@ function Login() {
           console.log("response.data[0]: ", response.data[0]);
           console.log("Object.keys(response.data).length: ", Object.keys(response.data).length);
 
-          //if(Object.keys(response.data).length !== 0){
           if(response.data[0] !== undefined){
 
             console.log("response.data[0].login_id: ", response.data[0].login_id);
-            setLoginID(response.data[0].login_id);
+            //setLoginID(response.data[0].login_id);
 
             Customer_Verifying(response.data[0].login_id);
             CFO_Verifying(response.data[0].login_id);
@@ -72,8 +65,6 @@ function Login() {
           setLoggedInB(false);
           console(err);
         });
-
-
     }//end else statement
   };
 
@@ -109,9 +100,9 @@ function Login() {
       if(id_number !== 0){
         console.log("In Customer_Verifying function: ", id_number);
 
-        const loginURLa = `${process.env.REACT_APP_API_URL}/User-Login/loginb`;
+        const loginURLb = `${process.env.REACT_APP_API_URL}/User-Login/loginb`;
         //Send loginID information to backend
-        Axios.post(loginURLa, {
+        Axios.post(loginURLb, {
           idLogin: id_number,
         })
           .then((response) => {
