@@ -14,19 +14,14 @@ class CFOShopDbServices {
     try {
       //Queery statement to insert CFO profile information into Database
       const response = await new Promise((resolve, reject) => {
-        const sqlInsert = ` SELECT LAST_INSERT_ID() INTO @tempid_cfo;
-        UPDATE BodegaDB.CFO_Shop SET
-          CFO_Shop_Name = ?,
-          CFO_firstname =?,
-          CFO_midlename = ?,
-          CFO_lastname =?,
-          CFO_food_tag = ?,
-          CFO_website_link = ?
-        WHERE CFO_id = @tempid_cfo;
-          INSERT INTO BodegaDB.Address (address1, address2, state, city, zipcode, CFO_Shop_id)
-          VALUES (?, ?, ?, ?, ?, @tempid_cfo); 
+        const sqlInsert = `INSERT INTO BodegaDB.CFO_Shop 
+        (CFO_Shop_Name, CFO_firstname, CFO_midlename, CFO_lastname, CFO_food_tag, CFO_website_link)
+        VALUES (?, ?, ?, ?, ?, ?);
+        Select LAST_INSERT_ID() into @tempid_cfo;
+        INSERT INTO BodegaDB.Address (address1, address2, state, city, zipcode, CFO_Shop_id)
+        VALUES (?, ?, ?, ?, ?, @tempid_cfo); 
         INSERT INTO BodegaDB.Contact (
-        phone_number,email_address,CFO_Shop_id)
+        phone_number, email_address, CFO_Shop_id)
         VALUES (?, ?,@tempid_cfo);`;
 
         connection.query(sqlInsert, CFOInsertData, (err, resuslts) => {
@@ -40,6 +35,38 @@ class CFOShopDbServices {
       console.log(error);
     }
   }
+
+    //Function Purpose to insert a new CFO Shop into the database (COMPLETE)
+    async updateCFOShop(CFOInsertData) {
+      try {
+        //Queery statement to insert CFO profile information into Database
+        const response = await new Promise((resolve, reject) => {
+          const sqlInsert = ` SELECT LAST_INSERT_ID() INTO @tempid_cfo;
+          UPDATE BodegaDB.CFO_Shop SET
+            CFO_Shop_Name = ?,
+            CFO_firstname =?,
+            CFO_midlename = ?,
+            CFO_lastname =?,
+            CFO_food_tag = ?,
+            CFO_website_link = ?
+          WHERE CFO_id = @tempid_cfo;
+            INSERT INTO BodegaDB.Address (address1, address2, state, city, zipcode, CFO_Shop_id)
+            VALUES (?, ?, ?, ?, ?, @tempid_cfo); 
+          INSERT INTO BodegaDB.Contact (
+          phone_number,email_address,CFO_Shop_id)
+          VALUES (?, ?,@tempid_cfo);`;
+  
+          connection.query(sqlInsert, CFOInsertData, (err, resuslts) => {
+            if (err) reject(new Error(err.message));
+            resolve(resuslts);
+          });
+        });
+  
+        return response;
+      } catch (error) {
+        console.log(error);
+      }
+    }
 
   //        *********   Read Functionality OF DB for CFO SHOP   **********
   //Function Purpose to pull all CFO shops from the database (COMPLETE)
